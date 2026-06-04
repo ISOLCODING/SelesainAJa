@@ -48,50 +48,32 @@ export function FAQSection() {
             transition={{ duration: 0.7 }}
             className="relative order-2 lg:order-1"
           >
-            <div className="relative aspect-square md:aspect-[4/5] lg:aspect-square w-full max-w-md mx-auto">
-              {/* Blob Background */}
-              <div className="absolute inset-0 bg-[#C4E2F5] rounded-[30%_70%_70%_30%/30%_30%_70%_70%] transform rotate-12 scale-90" />
-              <div className="absolute inset-4 border-2 border-dashed border-[#1591DC]/30 rounded-[70%_30%_30%_70%/70%_70%_30%_30%] transform -rotate-6" />
-              
+            <div className="relative aspect-square w-full max-w-lg mx-auto rounded-[2.5rem] overflow-hidden shadow-2xl">
               <Image 
-                src="/images/faq-confused.png" 
-                alt="Mahasiswa bingung dengan tugas"
+                src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1000&auto=format&fit=crop" 
+                alt="FAQ SelesainAja"
                 fill
-                className="object-contain object-bottom z-10 drop-shadow-xl scale-110 origin-bottom"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover hover:scale-105 transition-transform duration-700"
               />
-
-              {/* Floating Question Marks */}
-              <motion.div 
-                animate={{ y: [0, -15, 0], rotate: [0, -10, 0] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-10 right-10 md:top-20 md:-right-4 text-5xl font-black text-[#2C5EAD] drop-shadow-md z-20"
-                style={{ fontFamily: "var(--font-batica)" }}
-              >
-                ?
-              </motion.div>
-              <motion.div 
-                animate={{ y: [0, 15, 0], rotate: [0, 10, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute top-1/2 -left-6 md:-left-12 text-6xl font-black text-[#4BB8FA] drop-shadow-md z-20 opacity-70"
-                style={{ fontFamily: "var(--font-batica)" }}
-              >
-                ?
-              </motion.div>
               
-              {/* Badge */}
+              {/* Premium Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0B]/80 via-[#0A0A0B]/20 to-transparent mix-blend-multiply" />
+              
+              {/* Glassmorphism Badge */}
               <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.3 }}
-                className="absolute bottom-12 -left-4 bg-white px-5 py-3 rounded-2xl shadow-[0_10px_30px_-10px_rgba(44,94,173,0.2)] border border-[#E4E4E7] z-20 flex items-center gap-3"
+                transition={{ delay: 0.4, type: "spring", bounce: 0.4 }}
+                className="absolute bottom-8 left-8 right-8 bg-white/10 backdrop-blur-xl px-6 py-5 rounded-3xl border border-white/20 z-20 flex items-center gap-5 shadow-[0_8px_32px_0_rgba(0,0,0,0.3)]"
               >
-                <div className="w-10 h-10 rounded-full bg-[#1591DC] flex items-center justify-center text-white font-bold text-xl">
-                  i
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#1591DC] to-[#2C5EAD] flex items-center justify-center text-white font-black text-2xl shrink-0 shadow-lg shadow-[#1591DC]/40">
+                  ?
                 </div>
                 <div>
-                  <p className="text-xs font-bold text-[#71717A] uppercase tracking-wider">Butuh Bantuan?</p>
-                  <p className="text-sm font-bold text-[#0A0A0B]">Cek FAQ di bawah</p>
+                  <p className="text-xs font-black text-white/70 uppercase tracking-[0.2em] mb-1.5">Butuh Bantuan?</p>
+                  <p className="text-lg font-bold text-white leading-tight">Hubungi Tim Customer Service Kami.</p>
                 </div>
               </motion.div>
             </div>

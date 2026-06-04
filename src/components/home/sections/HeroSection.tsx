@@ -147,7 +147,7 @@ export function HeroSection() {
                     <Star className="w-3.5 h-3.5 fill-current" />
                     <Star className="w-3.5 h-3.5 fill-current" />
                   </div>
-                  <p className="text-xs font-bold text-[#0A0A0B] leading-tight">"Skripsi beres tepat waktu! Mantap 👍"</p>
+                  <p className="text-xs font-bold text-[#0A0A0B] leading-tight">"Skripsi beres tepat waktu! Mantap "</p>
                 </div>
               </motion.div>
 
