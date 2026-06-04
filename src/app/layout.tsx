@@ -113,6 +113,7 @@ export const metadata: Metadata = {
     yahoo: "YAHOO_VERIFICATION_CODE",
     other: {
       "msvalidate.01": "BING_VERIFICATION_CODE",
+      "pinterest-site-verification": "PINTEREST_CODE",
     },
   },
 
@@ -126,14 +127,24 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.svg", type: "image/svg+xml" },
       { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
       { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-48x48.png", sizes: "48x48", type: "image/png" },
     ],
     apple: [
       { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+      { url: "/apple-touch-icon-57x57.png", sizes: "57x57", type: "image/png" },
+      { url: "/apple-touch-icon-72x72.png", sizes: "72x72", type: "image/png" },
+      { url: "/apple-touch-icon-114x114.png", sizes: "114x114", type: "image/png" },
+      { url: "/apple-touch-icon-120x120.png", sizes: "120x120", type: "image/png" },
+      { url: "/apple-touch-icon-144x144.png", sizes: "144x144", type: "image/png" },
+      { url: "/apple-touch-icon-152x152.png", sizes: "152x152", type: "image/png" },
     ],
     other: [
       { url: "/android-chrome-192x192.png", sizes: "192x192", type: "image/png" },
+      { url: "/android-chrome-256x256.png", sizes: "256x256", type: "image/png" },
+      { url: "/android-chrome-384x384.png", sizes: "384x384", type: "image/png" },
       { url: "/android-chrome-512x512.png", sizes: "512x512", type: "image/png" },
     ],
   },
@@ -155,8 +166,12 @@ export const metadata: Metadata = {
   },
 
   other: {
+    "google-site-verification": "GOOGLE_CODE",
+    "msvalidate.01": "BING_CODE",
+    "p:domain_verify": "PINTEREST_CODE",
     "fb:app_id": "FACEBOOK_APP_ID",
     "fb:pages": "FACEBOOK_PAGE_ID",
+    "ia:markup_url": "https://selesainaja.com/ia",
   },
 }
 
