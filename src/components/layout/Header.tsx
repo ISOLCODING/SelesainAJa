@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet"
 import { Menu, X, Phone, ArrowRight, ChevronDown } from "lucide-react"
@@ -40,13 +41,15 @@ export function Header() {
       <div className="container-custom">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 group shrink-0">
-            <div className="w-9 h-9 bg-[#0066FF] rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform">
-              <span className="text-white font-bold text-lg">S</span>
-            </div>
-            <span className="font-bold text-xl tracking-tight text-[#0A0A0B]">
-              Selesain<span className="text-[#0066FF]">Aja</span>
-            </span>
+          <Link href="/" className="flex items-center group shrink-0 py-2">
+            <Image 
+              src="/images/Logo.png" 
+              alt="SelesainAja Logo" 
+              width={180} 
+              height={45} 
+              priority
+              className="h-8 md:h-9 w-auto object-contain group-hover:scale-105 transition-transform origin-left"
+            />
           </Link>
 
           {/* Desktop Nav */}

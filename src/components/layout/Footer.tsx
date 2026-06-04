@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { motion } from "framer-motion"
 import { Mail, Phone, MapPin, ArrowUpRight, Send } from "lucide-react"
 import { services } from "@/lib/constants"
@@ -107,11 +108,14 @@ export function Footer() {
           
           {/* Brand Column */}
           <div className="lg:col-span-4">
-            <Link href="/" className="inline-flex items-center gap-3 mb-5">
-              <div className="w-10 h-10 bg-gradient-to-br from-[#1591DC] to-[#2C5EAD] rounded-xl flex items-center justify-center shadow-lg shadow-[#1591DC]/30">
-                <span className="text-white font-black text-lg">S</span>
-              </div>
-              <span className="font-black text-xl text-white tracking-tight">SelesainAja</span>
+            <Link href="/" className="inline-flex items-center group mb-6">
+              <Image 
+                src="/images/Logo.png" 
+                alt="SelesainAja Logo" 
+                width={200} 
+                height={50} 
+                className="h-10 md:h-12 w-auto object-contain group-hover:scale-105 transition-transform origin-left brightness-0 invert" 
+              />
             </Link>
             <p className="text-sm text-white/55 max-w-xs mb-6 leading-relaxed">
               Platform jasa pengerjaan tugas akademik profesional #1 Indonesia. Tim ahli, kualitas terjamin, harga transparan.
