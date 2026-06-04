@@ -112,9 +112,9 @@ export function Footer() {
               <Image 
                 src="/images/Logo.png" 
                 alt="SelesainAja Logo" 
-                width={200} 
-                height={50} 
-                className="h-10 md:h-12 w-auto object-contain group-hover:scale-105 transition-transform origin-left brightness-0 invert" 
+                width={260} 
+                height={65} 
+                className="h-12 md:h-16 w-auto object-contain group-hover:scale-105 transition-transform origin-left brightness-0 invert" 
               />
             </Link>
             <p className="text-sm text-white/55 max-w-xs mb-6 leading-relaxed">
