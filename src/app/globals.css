@@ -85,5 +85,8 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --radius-xl: calc(var(--radius) + 4px);
   --font-sans: var(--font-roboto), system-ui, sans-serif;
+  --font-display: var(--font-jakarta), system-ui, sans-serif;
+  --font-jakarta: var(--font-jakarta), system-ui, sans-serif;
 }

@@ -249,11 +249,11 @@ export default function ServiceDetailClient({
               </div>
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-800 tracking-tight leading-[1.1] mb-6 relative z-10">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-800 tracking-tight leading-[1.1] mb-6 relative z-10 font-jakarta">
               {service.title.split(" ").map((word, i) => (
                 <span
                   key={i}
-                  className={i % 2 !== 0 ? "text-primary font-serif italic font-normal mr-3" : "mr-3"}
+                  className={i % 2 !== 0 ? "text-primary font-jakarta font-black mr-3" : "mr-3"}
                 >
                   {word}
                 </span>
@@ -289,8 +289,8 @@ export default function ServiceDetailClient({
                 Siap Dikerjakan
               </div>
 
-              <h2 className="text-3xl lg:text-4xl font-black mb-6 leading-tight tracking-tight">
-                <span className="font-serif italic text-white/90 font-normal">Investasi</span><br />
+              <h2 className="text-3xl lg:text-4xl font-black mb-6 leading-tight tracking-tight font-jakarta">
+                <span className="font-jakarta font-black text-white/90">Investasi</span><br />
                 Tugas Anda
               </h2>
 
@@ -357,8 +357,8 @@ export default function ServiceDetailClient({
                 <span className="inline-block px-4 py-1.5 bg-accent/10 text-primary font-bold uppercase tracking-[0.2em] text-xs rounded-full mb-3">
                   Simple & Fast
                 </span>
-                <h3 className="text-3xl md:text-4xl font-black text-slate-900">
-                  Cara <span className="font-serif italic text-primary font-normal">Order</span>
+                <h3 className="text-3xl md:text-4xl font-black text-slate-900 font-jakarta">
+                  Cara <span className="font-jakarta font-black text-primary">Order</span>
                 </h3>
               </div>
               <div className="hidden md:flex items-center gap-2 text-slate-400 font-medium text-sm bg-slate-50 px-4 py-2 rounded-full">
@@ -396,8 +396,8 @@ export default function ServiceDetailClient({
               <span className="inline-block px-4 py-1.5 bg-emerald-100 text-emerald-700 font-bold uppercase tracking-[0.2em] text-xs rounded-full mb-3">
                 Verified
               </span>
-              <h3 className="text-2xl md:text-3xl font-black text-slate-900">
-                Metode <span className="font-serif italic text-primary font-normal">Bayar</span>
+              <h3 className="text-2xl md:text-3xl font-black text-slate-900 font-jakarta">
+                Metode <span className="font-jakarta font-black text-primary">Bayar</span>
               </h3>
             </div>
 
@@ -422,8 +422,8 @@ export default function ServiceDetailClient({
               <span className="inline-block px-4 py-1.5 bg-secondary/10 text-secondary font-bold uppercase tracking-[0.2em] text-xs rounded-full mb-4">
                 FAQ
               </span>
-              <h3 className="text-3xl md:text-4xl font-black text-slate-900">
-                Pertanyaan <span className="font-serif italic text-primary font-normal">Umum</span>
+              <h3 className="text-3xl md:text-4xl font-black text-slate-900 font-jakarta">
+                Pertanyaan <span className="font-jakarta font-black text-primary">Umum</span>
               </h3>
             </div>
 

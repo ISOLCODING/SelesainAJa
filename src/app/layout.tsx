@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next"
-import { Roboto } from "next/font/google"
+import { Roboto, Plus_Jakarta_Sans } from "next/font/google"
 import "./globals.css"
 import { Toaster } from "@/components/ui/sonner"
 import { TooltipProvider } from "@/components/ui/tooltip"
@@ -168,13 +168,20 @@ const roboto = Roboto({
   display: "swap",
 })
 
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-jakarta",
+  display: "swap",
+})
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
   return (
-    <html lang="id" className={`scroll-smooth ${roboto.variable}`} suppressHydrationWarning>
+    <html lang="id" className={`scroll-smooth ${roboto.variable} ${jakarta.variable}`} suppressHydrationWarning>
       <body className="font-sans antialiased bg-[#FAFAFA] text-[#0A0A0B] min-h-screen flex flex-col" suppressHydrationWarning>
         <TooltipProvider>
           {children}
