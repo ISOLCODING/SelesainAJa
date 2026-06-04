@@ -236,9 +236,7 @@ export default function ServiceDetailClient({
           <div 
             ref={(el) => { bentoRefs.current[0] = el; }}
             className="lg:col-span-8 bg-white p-8 lg:p-12 rounded-[2.5rem] shadow-sm border border-slate-100 flex flex-col justify-center relative overflow-hidden group"
-          >
-            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-primary/5 to-transparent rounded-bl-full" />
-            
+          > 
             <div className="flex items-center gap-6 mb-8 relative z-10">
               <div className="w-20 h-20 md:w-24 md:h-24 bg-gradient-to-br from-primary to-secondary text-white flex items-center justify-center rounded-[2rem] shadow-lg shadow-primary/20 -rotate-3 group-hover:rotate-0 transition-transform duration-500 shrink-0">
                 <Icon className="text-5xl md:text-6xl drop-shadow-sm" />
@@ -247,15 +245,11 @@ export default function ServiceDetailClient({
                 <span className="text-secondary font-black tracking-[0.2em] uppercase text-xs bg-secondary/10 px-4 py-1.5 rounded-full inline-block mb-2">
                   Layanan Premium
                 </span>
-                <div className="flex gap-1">
-                  {[1, 2, 3, 4, 5].map((i) => (
-                    <BiStar key={i} className="text-accent text-lg" />
-                  ))}
-                </div>
+               
               </div>
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-[1.1] mb-6 relative z-10">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-800 tracking-tight leading-[1.1] mb-6 relative z-10">
               {service.title.split(" ").map((word, i) => (
                 <span
                   key={i}
@@ -285,23 +279,23 @@ export default function ServiceDetailClient({
           {/* 2. PRICING & ACTION BLOCK (Span 4) */}
           <div 
             ref={(el) => { bentoRefs.current[1] = el; }}
-            className="lg:col-span-4 bg-[#0A0A0B] text-white p-8 lg:p-10 rounded-[2.5rem] shadow-2xl flex flex-col justify-between relative overflow-hidden group hover:shadow-primary/20 transition-shadow duration-500"
+            className="lg:col-span-4 bg-gradient-to-br from-primary to-secondary text-white p-8 lg:p-10 rounded-[2.5rem] shadow-[0_20px_40px_-15px_rgba(44,94,173,0.4)] flex flex-col justify-between relative overflow-hidden group hover:shadow-[0_20px_40px_-10px_rgba(44,94,173,0.6)] transition-shadow duration-500"
           >
-            <div className="absolute top-[-50px] right-[-50px] w-48 h-48 bg-primary/30 rounded-full blur-[40px] group-hover:scale-150 transition-transform duration-700" />
+            <div className="absolute top-[-50px] right-[-50px] w-48 h-48 bg-white/20 rounded-full blur-[40px] group-hover:scale-150 transition-transform duration-700" />
             
             <div className="relative z-10">
-              <div className="inline-flex items-center gap-2 bg-white/10 text-white px-4 py-2 rounded-full text-xs font-black uppercase tracking-[0.2em] mb-8 backdrop-blur-sm border border-white/10">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <div className="inline-flex items-center gap-2 bg-white/15 text-white px-4 py-2 rounded-full text-xs font-black uppercase tracking-[0.2em] mb-8 backdrop-blur-sm border border-white/20 shadow-sm">
+                <span className="w-2 h-2 rounded-full bg-emerald-300 animate-pulse" />
                 Siap Dikerjakan
               </div>
 
               <h2 className="text-3xl lg:text-4xl font-black mb-6 leading-tight tracking-tight">
-                <span className="font-serif italic text-accent font-normal">Investasi</span><br />
+                <span className="font-serif italic text-white/90 font-normal">Investasi</span><br />
                 Tugas Anda
               </h2>
 
-              <div className="mb-8 p-6 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 group-hover:bg-white/10 transition-colors duration-400">
-                <p className="text-white/60 text-xs font-bold uppercase tracking-[0.2em] mb-2">Mulai Dari</p>
+              <div className="mb-8 p-6 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 group-hover:bg-white/15 transition-colors duration-400">
+                <p className="text-white/80 text-xs font-bold uppercase tracking-[0.2em] mb-2">Mulai Dari</p>
                 <p className="text-4xl lg:text-5xl font-black text-white tracking-tight">{service.price}</p>
               </div>
 
@@ -311,11 +305,11 @@ export default function ServiceDetailClient({
                   { icon: BiFileBlank, text: "Format Lengkap Sesuai Brief" },
                   { icon: BiShieldQuarter, text: "Privasi 100% Terjamin" },
                 ].map((row, i) => (
-                  <div key={i} className="flex items-center gap-4 text-white/80">
-                    <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center shrink-0 border border-white/10">
-                      <row.icon className="text-xl text-accent" />
+                  <div key={i} className="flex items-center gap-4 text-white/90">
+                    <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center shrink-0 border border-white/20">
+                      <row.icon className="text-xl text-white" />
                     </div>
-                    <span className="font-semibold text-sm">{row.text}</span>
+                    <span className="font-medium text-sm">{row.text}</span>
                   </div>
                 ))}
               </div>
@@ -325,9 +319,9 @@ export default function ServiceDetailClient({
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="relative z-10 w-full flex items-center justify-center gap-3 bg-white hover:bg-primary text-[#0A0A0B] hover:text-white py-5 px-6 rounded-2xl font-black text-lg transition-all duration-400 shadow-[0_0_20px_rgba(255,255,255,0.1)] group/btn hover:scale-[1.02]"
+              className="relative z-10 w-full flex items-center justify-center gap-3 bg-white hover:bg-slate-50 text-primary py-5 px-6 rounded-2xl font-black text-lg transition-all duration-400 shadow-xl group/btn hover:-translate-y-1"
             >
-              <BiLogoWhatsapp className="text-3xl" />
+              <BiLogoWhatsapp className="text-3xl text-emerald-500" />
               PESAN SEKARANG
               <BiRightArrowAlt className="text-2xl group-hover/btn:translate-x-2 transition-transform duration-400" />
             </a>
