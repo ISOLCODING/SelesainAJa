@@ -147,14 +147,14 @@ export function HowItWorksSection() {
             <div className={`absolute bottom-0 w-full aspect-square rounded-[40%_60%_70%_30%/40%_50%_60%_50%] opacity-10 transform rotate-12 scale-90 md:scale-100 transition-colors duration-700`} style={{ backgroundColor: steps[activeStep].color }} />
             <div className={`absolute bottom-10 w-[90%] aspect-square rounded-[60%_40%_30%_70%/60%_30%_70%_40%] opacity-20 transform -rotate-12 scale-90 md:scale-100 blur-2xl transition-colors duration-700`} style={{ backgroundColor: steps[activeStep].color }} />
             
-            <div className="relative w-[90%] max-w-[400px] aspect-[3/4] md:aspect-square lg:aspect-[3/4] z-10">
+            <div className="relative w-full max-w-[550px] aspect-[4/5] md:aspect-[3/4] lg:aspect-square z-10">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeStep}
-                  initial={{ opacity: 0, y: 10 }}
+                  initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.4 }}
+                  exit={{ opacity: 0, y: -15 }}
+                  transition={{ duration: 0.5 }}
                   className="w-full h-full relative"
                 >
                   <Image 
@@ -162,7 +162,7 @@ export function HowItWorksSection() {
                     alt="Mahasiswa menunjuk ke atas dengan senyum"
                     fill
                     sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-contain object-bottom drop-shadow-[0_20px_30px_rgba(0,0,0,0.15)] scale-110 origin-bottom"
+                    className="object-contain object-bottom drop-shadow-[0_30px_40px_rgba(0,0,0,0.2)] scale-125 md:scale-[1.35] origin-bottom"
                   />
                 </motion.div>
               </AnimatePresence>
