@@ -5,6 +5,9 @@ import { PageHeader } from "@/components/layout/PageHeader"
 import { SectionWrapper } from "@/components/shared/SectionWrapper"
 import { SectionHeading } from "@/components/shared/SectionHeading"
 import { ShieldCheck, Users, Trophy, Target } from "lucide-react"
+import Image from "next/image"
+import JsonLd from "@/components/seo/JsonLd"
+import { getBreadcrumbSchema } from "@/lib/seo/structured-data"
 
 export const metadata: Metadata = {
   title: "Tentang SelesainAja — Platform Jasa Pengerjaan Tugas #1 Indonesia",
@@ -49,8 +52,13 @@ const values = [
 ]
 
 export default function AboutPage() {
+  const breadcrumbSchema = getBreadcrumbSchema([
+    { name: "Tentang Kami", url: "https://selesainaja.com/about" }
+  ]);
+
   return (
     <>
+      <JsonLd data={breadcrumbSchema} />
       <Header />
       <main className="min-h-screen bg-white">
         <PageHeader 
@@ -79,11 +87,13 @@ export default function AboutPage() {
               </div>
             </div>
             <div className="relative">
-              <div className="aspect-square bg-[#FAFAFA] rounded-3xl overflow-hidden">
-                <img 
+              <div className="aspect-square bg-[#FAFAFA] rounded-3xl overflow-hidden relative">
+                <Image 
                   src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop" 
-                  alt="Tim SelesainAja" 
-                  className="w-full h-full object-cover"
+                  alt="Tim SelesainAja"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover"
                 />
               </div>
             </div>

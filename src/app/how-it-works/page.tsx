@@ -1,5 +1,7 @@
 import { Metadata } from "next"
 import { HowItWorksClient } from "@/components/how-it-works/HowItWorksClient"
+import JsonLd from "@/components/seo/JsonLd"
+import { getBreadcrumbSchema } from "@/lib/seo/structured-data"
 
 export const metadata: Metadata = {
   title: "Cara Order Jasa Pengerjaan Tugas — Mudah & Cepat",
@@ -21,5 +23,14 @@ export const metadata: Metadata = {
 }
 
 export default function HowItWorksPage() {
-  return <HowItWorksClient />
+  const breadcrumbSchema = getBreadcrumbSchema([
+    { name: "Cara Order", url: "https://selesainaja.com/how-it-works" }
+  ]);
+
+  return (
+    <>
+      <JsonLd data={breadcrumbSchema} />
+      <HowItWorksClient />
+    </>
+  )
 }

@@ -5,6 +5,9 @@ import { PageHeader } from "@/components/layout/PageHeader"
 import { SectionWrapper } from "@/components/shared/SectionWrapper"
 import Link from "next/link"
 import { ArrowRight, Calendar, User } from "lucide-react"
+import Image from "next/image"
+import JsonLd from "@/components/seo/JsonLd"
+import { getBreadcrumbSchema } from "@/lib/seo/structured-data"
 
 export const metadata: Metadata = {
   title: "Blog — Tips Akademik, Panduan Tugas, & Informasi Kuliah",
@@ -29,8 +32,13 @@ export const metadata: Metadata = {
 import { blogPosts } from "@/lib/data/blog"
 
 export default function BlogPage() {
+  const breadcrumbSchema = getBreadcrumbSchema([
+    { name: "Blog", url: "https://selesainaja.com/blog" }
+  ]);
+
   return (
     <>
+      <JsonLd data={breadcrumbSchema} />
       <Header />
       <main className="min-h-screen bg-white">
         <PageHeader 
@@ -43,10 +51,12 @@ export default function BlogPage() {
             {blogPosts.map((post, index) => (
               <div key={index} className="group bg-[#FAFAFA] border border-[#E4E4E7] rounded-3xl overflow-hidden hover:border-[#0066FF]/30 transition-all duration-300 flex flex-col">
                 <div className="aspect-[4/3] overflow-hidden relative">
-                  <img 
+                  <Image 
                     src={post.image} 
-                    alt={post.title} 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    alt={post.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 text-xs font-semibold text-[#0066FF] rounded-full">
                     {post.category}

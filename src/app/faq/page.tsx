@@ -3,6 +3,8 @@ import { Header } from "@/components/layout/Header"
 import { Footer } from "@/components/layout/Footer"
 import { PageHeader } from "@/components/layout/PageHeader"
 import { FAQSection } from "@/components/home/sections/FAQSection"
+import JsonLd from "@/components/seo/JsonLd"
+import { getFAQSchema, getBreadcrumbSchema } from "@/lib/seo/structured-data"
 
 export const metadata: Metadata = {
   title: "FAQ — Pertanyaan Seputar Jasa Pengerjaan Tugas",
@@ -24,8 +26,15 @@ export const metadata: Metadata = {
 }
 
 export default function FAQPage() {
+  const faqSchema = getFAQSchema();
+  const breadcrumbSchema = getBreadcrumbSchema([
+    { name: "FAQ", url: "https://selesainaja.com/faq" }
+  ]);
+
   return (
     <>
+      <JsonLd data={faqSchema} />
+      <JsonLd data={breadcrumbSchema} />
       <Header />
       <main className="min-h-screen bg-white">
         <PageHeader 

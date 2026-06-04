@@ -8,6 +8,8 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import Link from "next/link"
+import JsonLd from "@/components/seo/JsonLd"
+import { getBreadcrumbSchema } from "@/lib/seo/structured-data"
 
 export const metadata: Metadata = {
   title: "Hubungi SelesainAja — Konsultasi Gratis Jasa Pengerjaan Tugas",
@@ -31,8 +33,13 @@ export const metadata: Metadata = {
 import { contactInfo } from "@/lib/data/contact"
 
 export default function ContactPage() {
+  const breadcrumbSchema = getBreadcrumbSchema([
+    { name: "Kontak", url: "https://selesainaja.com/contact" }
+  ]);
+
   return (
     <>
+      <JsonLd data={breadcrumbSchema} />
       <Header />
       <main className="min-h-screen bg-white">
         <PageHeader 

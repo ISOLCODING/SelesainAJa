@@ -5,6 +5,8 @@ import { services } from "@/lib/constants";
 import Link from "next/link";
 import { RiArrowLeftLine } from "react-icons/ri";
 import ServiceDetailClient from "@/components/services/ServiceDetailClient";
+import JsonLd from "@/components/seo/JsonLd";
+import { getServiceSchema, getBreadcrumbSchema } from "@/lib/seo/structured-data";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -67,8 +69,16 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
     );
   }
 
+  const serviceSchema = getServiceSchema(slug);
+  const breadcrumbSchema = getBreadcrumbSchema([
+    { name: "Layanan", url: "https://selesainaja.com/services" },
+    { name: service.title, url: `https://selesainaja.com/services/${slug}` }
+  ]);
+
   return (
     <>
+      <JsonLd data={serviceSchema} />
+      <JsonLd data={breadcrumbSchema} />
       <Header />
       <main className="grow min-h-screen bg-[#FAF9F6] font-sans">
         <ServiceDetailClient slug={slug} serviceTitle={service.title} />

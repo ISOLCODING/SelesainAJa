@@ -1,8 +1,11 @@
 import { Metadata } from "next"
 import { Header } from "@/components/layout/Header"
 import { Footer } from "@/components/layout/Footer"
+import { Footer } from "@/components/layout/Footer"
 import { PageHeader } from "@/components/layout/PageHeader"
 import { ServicesSection } from "@/components/home/sections/ServicesSection"
+import JsonLd from "@/components/seo/JsonLd"
+import { getBreadcrumbSchema } from "@/lib/seo/structured-data"
 
 export const metadata: Metadata = {
   title: "Layanan Jasa Pengerjaan Tugas — Makalah, Paper, Presentasi",
@@ -28,8 +31,13 @@ export const metadata: Metadata = {
 }
 
 export default function ServicesPage() {
+  const breadcrumbSchema = getBreadcrumbSchema([
+    { name: "Layanan", url: "https://selesainaja.com/services" }
+  ]);
+
   return (
     <>
+      <JsonLd data={breadcrumbSchema} />
       <Header />
       <main className="min-h-screen bg-white">
         <PageHeader

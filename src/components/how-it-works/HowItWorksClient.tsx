@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Header } from "@/components/layout/Header"
 import { Footer } from "@/components/layout/Footer"
 import { RiWhatsappLine, RiArrowRightUpLine } from "react-icons/ri"
+import Image from "next/image"
 
 const steps = [
   {
@@ -129,10 +130,12 @@ export function HowItWorksClient() {
                   transition={{ duration: 0.4 }}
                   className="absolute inset-0"
                 >
-                  <img 
+                  <Image 
                     src={steps[activeStep].image} 
                     alt={steps[activeStep].title} 
-                    className="w-full h-full object-cover"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover"
                   />
                   {/* Solid overlay pattern (Swiss touch) */}
                   <div className={`absolute inset-0 opacity-20 mix-blend-multiply ${steps[activeStep].color}`} />
