@@ -105,23 +105,23 @@ export function Footer() {
         </motion.div>
 
         {/* Main Footer Grid */}
-        <div className="flex flex-col lg:flex-row gap-12 pb-16 border-b border-white/10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 pb-16 border-b border-white/10">
           
           {/* Brand Column (Logo Kiri, Info Kanan) */}
-          <div className="lg:w-[55%] flex flex-col sm:flex-row gap-8 items-start">
+          <div className="lg:col-span-7 flex flex-col sm:flex-row gap-6 md:gap-8 items-start">
             {/* Logo area */}
-            <Link href="/" className="shrink-0 group sm:w-[220px]">
+            <Link href="/" className="shrink-0 group w-40 md:w-56 mt-1">
               <Image 
                 src="/images/Logo.png" 
                 alt="SelesainAja Logo" 
-                width={200} 
-                height={50} 
-                className="h-12 md:h-14 w-auto object-contain group-hover:scale-105 transition-transform origin-left brightness-0 invert" 
+                width={400} 
+                height={120} 
+                className="w-full h-auto object-contain group-hover:scale-105 transition-transform origin-left brightness-0 invert" 
               />
             </Link>
             
             {/* Information area */}
-            <div className="flex-1 border-l-0 sm:border-l sm:border-white/10 sm:pl-8">
+            <div className="flex-1 border-l-0 sm:border-l sm:border-white/10 sm:pl-6 md:pl-8">
               <p className="text-sm text-white/60 mb-6 leading-relaxed max-w-sm">
                 Platform jasa pengerjaan tugas akademik profesional #1 Indonesia. Tim ahli, kualitas terjamin, harga transparan.
               </p>
@@ -144,7 +144,7 @@ export function Footer() {
           </div>
 
           {/* Links Columns */}
-          <div className="lg:w-[45%] grid grid-cols-2 md:grid-cols-3 gap-8">
+          <div className="lg:col-span-5 grid grid-cols-2 sm:grid-cols-3 gap-6 md:gap-8 mt-8 lg:mt-0">
             
             {/* Layanan */}
             <div>
