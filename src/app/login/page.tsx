@@ -1,42 +1,60 @@
 import { Metadata } from "next"
-import { Header } from "@/components/layout/Header"
-import { Footer } from "@/components/layout/Footer"
-import { PageHeader } from "@/components/layout/PageHeader"
-import { buttonVariants } from "@/components/ui/button"
+import { LoginForm } from "@/components/auth/LoginForm"
 import Link from "next/link"
+import { RiArrowLeftLine } from "react-icons/ri"
 
 export const metadata: Metadata = {
   title: "Masuk — SelesainAja | Jasa Pengerjaan Tugas",
-  description:
-    "Masuk ke akun SelesainAja untuk melihat status order, riwayat pembayaran, dan download hasil tugas Anda.",
+  description: "Masuk ke akun SelesainAja untuk mengelola pesanan Anda.",
   robots: { index: false, follow: false },
 }
 
 export default function LoginPage() {
   return (
-    <>
-      <Header />
-      <main className="min-h-screen bg-white">
-        <PageHeader 
-          title="Masuk ke Akun Anda" 
-          description="Akses dashboard Anda untuk melacak status pengerjaan tugas."
-        />
-        <div className="container mx-auto px-6 py-20 text-center max-w-lg">
-          <div className="bg-slate-50 p-8 rounded-2xl border border-slate-100">
-            <h2 className="text-2xl font-bold text-slate-900 mb-6">Portal Sedang Dalam Pengembangan</h2>
-            <p className="text-slate-600 mb-8">
-              Fitur login klien saat ini masih dalam tahap penyempurnaan. Silakan hubungi admin kami melalui WhatsApp untuk informasi status pesanan Anda.
-            </p>
-            <a href="https://wa.me/6281112345678" target="_blank" rel="noopener noreferrer" className={buttonVariants({ size: "lg", className: "w-full bg-[#0066FF] hover:bg-[#0052CC] text-white" })}>
-              Hubungi Admin via WhatsApp
-            </a>
-            <p className="mt-6 text-sm text-slate-500">
-              Belum punya akun? <Link href="/register" className="text-[#0066FF] hover:underline font-medium">Daftar sekarang</Link>
-            </p>
-          </div>
+    <div className="min-h-screen bg-slate-50 flex">
+      {/* LEFT PANEL - BRANDING (Hidden on Mobile) */}
+      <div className="hidden lg:flex lg:w-[45%] bg-primary relative flex-col justify-between p-12 overflow-hidden">
+        {/* Abstract Background Elements */}
+        <div className="absolute top-[-10%] left-[-10%] w-96 h-96 bg-white/10 rounded-full blur-[80px]"></div>
+        <div className="absolute bottom-[-10%] right-[-10%] w-96 h-96 bg-secondary/20 rounded-full blur-[80px]"></div>
+        
+        <div className="relative z-10">
+          <Link href="/" className="inline-flex items-center gap-2 text-white/80 hover:text-white font-medium transition-colors bg-white/10 px-5 py-2.5 rounded-full backdrop-blur-md border border-white/10 hover:bg-white/20">
+            <RiArrowLeftLine className="text-xl" />
+            Kembali ke Beranda
+          </Link>
         </div>
-      </main>
-      <Footer />
-    </>
+
+        <div className="relative z-10 max-w-lg mt-20">
+          <h2 className="text-5xl lg:text-[4rem] font-black font-jakarta text-white leading-[1.1] mb-6 tracking-tight">
+            Dashboard<br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 to-cyan-300">
+              Masa Depan.
+            </span>
+          </h2>
+          <p className="text-xl text-white/80 font-medium leading-relaxed">
+            Kelola seluruh tugas akademik Anda dalam satu tempat dengan sistem cerdas yang dirancang khusus untuk produktivitas.
+          </p>
+        </div>
+
+        <div className="relative z-10 text-white/60 text-sm font-medium">
+          &copy; {new Date().getFullYear()} SelesainAja. Hak Cipta Dilindungi.
+        </div>
+      </div>
+
+      {/* RIGHT PANEL - FORM */}
+      <div className="w-full lg:w-[55%] flex flex-col relative items-center justify-center p-6 sm:p-12 bg-white lg:bg-slate-50/50">
+        {/* Mobile Home Button */}
+        <div className="absolute top-6 left-6 lg:hidden z-20">
+          <Link href="/" className="inline-flex items-center justify-center w-10 h-10 text-slate-500 hover:text-primary font-medium transition-colors bg-white rounded-full shadow-md border border-slate-100">
+            <RiArrowLeftLine className="text-xl" />
+          </Link>
+        </div>
+        
+        <div className="w-full py-8">
+          <LoginForm />
+        </div>
+      </div>
+    </div>
   )
 }
