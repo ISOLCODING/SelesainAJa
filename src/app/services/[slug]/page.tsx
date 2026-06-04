@@ -51,7 +51,7 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
     <>
       <Header />
       <main className="grow min-h-screen bg-[#FAF9F6] font-sans">
-        <ServiceDetailClient slug={slug} />
+        <ServiceDetailClient slug={slug} serviceTitle={service.title} />
       </main>
       <Footer />
     </>

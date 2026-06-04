@@ -6,6 +6,7 @@ import { useState, useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import { RiHomeLine, RiArrowRightSLine } from "react-icons/ri";
 import { 
   BiArrowBack, 
   BiCheckCircle, 
@@ -93,7 +94,7 @@ const generalFaqs = [
   { q: "Apakah saya bisa memantau progres pengerjaan?", a: "Ya, Anda bisa selalu menghubungi admin CS kami yang responsif via WhatsApp untuk menanyakan progres dari tugas yang sedang dikerjakan. Kami menjamin transparansi di setiap tahap." }
 ];
 
-export default function ServiceDetailClient({ slug }: { slug: string }) {
+export default function ServiceDetailClient({ slug, serviceTitle }: { slug: string; serviceTitle?: string }) {
   const [activeFaq, setActiveFaq] = useState<number | null>(0);
   const [activeTab, setActiveTab] = useState<"overview" | "benefits" | "process" | "faq">("overview");
   const [isMounted, setIsMounted] = useState(false);
@@ -196,9 +197,30 @@ export default function ServiceDetailClient({ slug }: { slug: string }) {
   const whatsappText = encodeURIComponent(`Halo Admin SelesainAja, saya tertarik dan ingin konsultasi mengenai layanan "${service.title}". Boleh minta informasi lebih lanjut?`);
   const whatsappUrl = `https://wa.me/6281112345678?text=${whatsappText}`;
 
+  const currentService = services.find(s => s.href === `/services/${slug}`);
+  const displayTitle = serviceTitle || currentService?.title || slug;
+
   return (
-    <div ref={containerRef} className="bg-[#FAF9F6] min-h-screen pt-32 pb-32 selection:bg-primary selection:text-white relative overflow-hidden font-sans">
+    <div ref={containerRef} className="bg-[#FAF9F6] min-h-screen selection:bg-primary selection:text-white relative overflow-hidden font-sans">
       
+      {/* Breadcrumb Bar */}
+      <div className="relative z-30 pt-24 pb-0">
+        <div className="container mx-auto px-4 md:px-8 lg:px-12 max-w-[1400px]">
+          <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-sm font-medium py-4 px-6 bg-white/70 backdrop-blur-md rounded-2xl border border-slate-200/60 shadow-sm inline-flex w-auto">
+            <Link href="/" className="flex items-center gap-1.5 text-slate-400 hover:text-primary transition-colors duration-200">
+              <RiHomeLine className="text-base" />
+              <span>Beranda</span>
+            </Link>
+            <RiArrowRightSLine className="text-slate-300 text-lg shrink-0" />
+            <Link href="/services" className="text-slate-400 hover:text-primary transition-colors duration-200">
+              Layanan
+            </Link>
+            <RiArrowRightSLine className="text-slate-300 text-lg shrink-0" />
+            <span className="text-primary font-semibold truncate max-w-[200px]">{displayTitle}</span>
+          </nav>
+        </div>
+      </div>
+
       {/* Modern Editorial Organic Background Blobs */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
         <div 
@@ -215,14 +237,14 @@ export default function ServiceDetailClient({ slug }: { slug: string }) {
         />
       </div>
 
-      <div className="container mx-auto px-4 md:px-8 lg:px-12 relative z-10 max-w-[1400px]">
+      <div className="container mx-auto px-4 md:px-8 lg:px-12 relative z-10 max-w-[1400px] pt-8 pb-32">
         
         {/* Editorial Back Button */}
-        <Link href="/services" className="inline-flex items-center text-slate-500 hover:text-primary font-bold mb-16 transition-all duration-300 uppercase tracking-[0.25em] text-xs lg:text-sm group relative z-20">
-          <span className="w-12 h-12 rounded-full bg-white shadow-md border border-slate-100 group-hover:border-primary group-hover:bg-primary group-hover:text-white flex items-center justify-center mr-5 transition-all duration-500 group-hover:scale-110">
-            <BiArrowBack className="text-2xl" />
+        <Link href="/services" className="inline-flex items-center text-slate-500 hover:text-primary font-bold mb-12 transition-all duration-300 uppercase tracking-[0.25em] text-xs lg:text-sm group relative z-20">
+          <span className="w-10 h-10 rounded-full bg-white shadow-md border border-slate-100 group-hover:border-primary group-hover:bg-primary group-hover:text-white flex items-center justify-center mr-4 transition-all duration-500 group-hover:scale-110">
+            <BiArrowBack className="text-lg" />
           </span>
-          <span className="group-hover:translate-x-2 transition-transform duration-300">Kembali ke Editorial Layanan</span>
+          <span className="group-hover:translate-x-2 transition-transform duration-300">Kembali ke Semua Layanan</span>
         </Link>
 
         <div className="flex flex-col lg:flex-row gap-20 items-start">
