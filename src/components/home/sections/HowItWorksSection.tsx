@@ -158,7 +158,7 @@ export function HowItWorksSection() {
                   className="w-full h-full relative"
                 >
                   <Image 
-                    src="/images/hero-guy.png" 
+                    src="/images/guy.png" 
                     alt="Mahasiswa menunjuk ke atas dengan senyum"
                     fill
                     sizes="(max-width: 1024px) 100vw, 50vw"
