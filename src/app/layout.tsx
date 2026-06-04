@@ -1,18 +1,170 @@
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Roboto } from "next/font/google"
 import "./globals.css"
 import { Toaster } from "@/components/ui/sonner"
 import { TooltipProvider } from "@/components/ui/tooltip"
 import { FloatingWhatsApp } from "@/components/shared/FloatingWhatsApp"
-export const metadata: Metadata = {
-  title: "SelesainAja | Jasa Joki Akademik Terpercaya",
-  description: "Platform jasa pengerjaan tugas akademik profesional untuk mahasiswa & pelajar Indonesia. Dikerjakan oleh tim ahli, kualitas terjamin, harga transparan.",
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#FFFFFF" },
+    { media: "(prefers-color-scheme: dark)", color: "#0A0A0B" },
+  ],
 }
 
-const roboto = Roboto({ 
-  subsets: ["latin"], 
+export const metadata: Metadata = {
+  metadataBase: new URL("https://selesainaja.com"),
+
+  title: {
+    default: "SelesainAja — Jasa Pengerjaan Tugas Profesional & Terpercaya",
+    template: "%s | SelesainAja",
+  },
+
+  description:
+    "Platform jasa pengerjaan tugas akademik #1 di Indonesia. Makalah, paper, presentasi, jurnal dikerjakan oleh tim profesional lulusan S2/S3. Mulai Rp50.000, cepat, bebas plagiat, revisi gratis!",
+
+  keywords: [
+    "jasa pengerjaan tugas",
+    "jasa pembuatan makalah",
+    "joki tugas",
+    "jasa tugas kuliah",
+    "jasa pembuatan paper",
+    "jasa presentasi",
+    "jasa jurnal ilmiah",
+    "bantuan tugas akademik",
+    "jasa pengetikan makalah",
+    "joki tugas terpercaya",
+    "jasa pengerjaan tugas online",
+    "jasa pembuatan makalah murah",
+    "jasa tugas sekolah",
+    "jasa essay beasiswa",
+    "jasa laporan praktikum",
+  ],
+
+  authors: [{ name: "Tim SelesainAja", url: "https://selesainaja.com/about" }],
+  creator: "SelesainAja",
+  publisher: "SelesainAja",
+
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+
+  openGraph: {
+    type: "website",
+    locale: "id_ID",
+    url: "https://selesainaja.com",
+    siteName: "SelesainAja",
+    title: "SelesainAja — Jasa Pengerjaan Tugas Profesional & Terpercaya",
+    description:
+      "Platform jasa pengerjaan tugas akademik #1 di Indonesia. Makalah, paper, presentasi, jurnal dikerjakan oleh tim profesional. Mulai Rp50.000!",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "SelesainAja - Jasa Pengerjaan Tugas Profesional",
+        type: "image/jpeg",
+      },
+      {
+        url: "/og-image-square.jpg",
+        width: 600,
+        height: 600,
+        alt: "SelesainAja Logo",
+        type: "image/jpeg",
+      },
+    ],
+    countryName: "Indonesia",
+    emails: ["support@selesainaja.com"],
+    phoneNumbers: ["+6281112345678"],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    site: "@selesainaja",
+    creator: "@selesainaja",
+    title: "SelesainAja — Jasa Pengerjaan Tugas Profesional",
+    description:
+      "Platform jasa pengerjaan tugas akademik #1 di Indonesia. Mulai Rp50.000!",
+    images: [
+      {
+        url: "/twitter-image.jpg",
+        width: 1200,
+        height: 675,
+        alt: "SelesainAja - Jasa Pengerjaan Tugas",
+      },
+    ],
+  },
+
+  verification: {
+    google: "GOOGLE_VERIFICATION_CODE",
+    yandex: "YANDEX_VERIFICATION_CODE",
+    yahoo: "YAHOO_VERIFICATION_CODE",
+    other: {
+      "msvalidate.01": "BING_VERIFICATION_CODE",
+    },
+  },
+
+  alternates: {
+    canonical: "https://selesainaja.com",
+    languages: {
+      "id-ID": "https://selesainaja.com",
+    },
+  },
+
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    other: [
+      { url: "/android-chrome-192x192.png", sizes: "192x192", type: "image/png" },
+      { url: "/android-chrome-512x512.png", sizes: "512x512", type: "image/png" },
+    ],
+  },
+
+  manifest: "/site.webmanifest",
+
+  appleWebApp: {
+    capable: true,
+    title: "SelesainAja",
+    statusBarStyle: "black-translucent",
+  },
+
+  formatDetection: {
+    telephone: true,
+    date: true,
+    address: true,
+    email: true,
+    url: true,
+  },
+
+  other: {
+    "fb:app_id": "FACEBOOK_APP_ID",
+    "fb:pages": "FACEBOOK_PAGE_ID",
+  },
+}
+
+const roboto = Roboto({
+  subsets: ["latin"],
   weight: ["400", "500", "700", "900"],
-  variable: "--font-roboto"
+  variable: "--font-roboto",
+  display: "swap",
 })
 
 export default function RootLayout({

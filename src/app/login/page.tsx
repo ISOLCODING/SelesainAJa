@@ -6,8 +6,10 @@ import { buttonVariants } from "@/components/ui/button"
 import Link from "next/link"
 
 export const metadata: Metadata = {
-  title: "Masuk | SelesainAja",
-  description: "Masuk ke akun SelesainAja untuk mengelola pesanan Anda.",
+  title: "Masuk — SelesainAja | Jasa Pengerjaan Tugas",
+  description:
+    "Masuk ke akun SelesainAja untuk melihat status order, riwayat pembayaran, dan download hasil tugas Anda.",
+  robots: { index: false, follow: false },
 }
 
 export default function LoginPage() {

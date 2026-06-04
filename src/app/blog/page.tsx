@@ -7,8 +7,23 @@ import Link from "next/link"
 import { ArrowRight, Calendar, User } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Blog & Tips Akademik | SelesainAja",
-  description: "Kumpulan artikel, tips, dan panduan akademik terbaru untuk membantu Anda menyusun makalah, skripsi, dan tugas kuliah dengan baik dan benar.",
+  title: "Blog — Tips Akademik, Panduan Tugas, & Informasi Kuliah",
+  description:
+    "Baca artikel tips akademik, panduan mengerjakan tugas, cara menulis makalah, format paper, dan informasi perkuliahan lainnya. Update setiap minggu!",
+  keywords: [
+    "tips akademik mahasiswa",
+    "panduan menulis makalah",
+    "cara mengerjakan tugas kuliah",
+    "blog jasa pengerjaan tugas",
+    "tips skripsi tesis",
+  ],
+  alternates: { canonical: "https://selesainaja.com/blog" },
+  openGraph: {
+    title: "Blog — Tips Akademik, Panduan Tugas, & Informasi Kuliah | SelesainAja",
+    description:
+      "Tips akademik, panduan mengerjakan tugas, cara menulis makalah, dan informasi kuliah. Update setiap minggu!",
+    url: "https://selesainaja.com/blog",
+  },
 }
 
 import { blogPosts } from "@/lib/data/blog"

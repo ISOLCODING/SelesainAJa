@@ -5,8 +5,22 @@ import { PageHeader } from "@/components/layout/PageHeader"
 import { FAQSection } from "@/components/home/sections/FAQSection"
 
 export const metadata: Metadata = {
-  title: "FAQ - Pertanyaan Seputar Layanan | SelesainAja",
-  description: "Temukan jawaban untuk pertanyaan yang paling sering diajukan mengenai layanan SelesainAja.",
+  title: "FAQ — Pertanyaan Seputar Jasa Pengerjaan Tugas",
+  description:
+    "Tanya jawab lengkap seputar jasa pengerjaan tugas: harga, proses, garansi, privasi, revisi. Temukan jawaban untuk semua pertanyaan Anda di sini.",
+  keywords: [
+    "faq jasa pengerjaan tugas",
+    "pertanyaan jasa makalah",
+    "garansi pengerjaan tugas",
+    "harga jasa tugas kuliah",
+  ],
+  alternates: { canonical: "https://selesainaja.com/faq" },
+  openGraph: {
+    title: "FAQ — Pertanyaan Seputar Jasa Pengerjaan Tugas | SelesainAja",
+    description:
+      "Tanya jawab lengkap: harga, proses, garansi, privasi, revisi. Temukan jawaban semua pertanyaan Anda.",
+    url: "https://selesainaja.com/faq",
+  },
 }
 
 export default function FAQPage() {

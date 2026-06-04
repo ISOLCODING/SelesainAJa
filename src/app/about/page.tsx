@@ -7,8 +7,22 @@ import { SectionHeading } from "@/components/shared/SectionHeading"
 import { ShieldCheck, Users, Trophy, Target } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Tentang Kami | SelesainAja",
-  description: "Mengenal lebih dekat SelesainAja, platform penyedia jasa akademik terkemuka dengan tim profesional.",
+  title: "Tentang SelesainAja — Platform Jasa Pengerjaan Tugas #1 Indonesia",
+  description:
+    "Kenali SelesainAja, platform jasa pengerjaan tugas terpercaya sejak 2020. 2.500+ pelanggan puas, 10.000+ tugas selesai, rating 4.9/5. Tim profesional lulusan S2/S3.",
+  keywords: [
+    "tentang selesainaja",
+    "jasa pengerjaan tugas terpercaya",
+    "platform tugas akademik indonesia",
+    "tim profesional jasa makalah",
+  ],
+  alternates: { canonical: "https://selesainaja.com/about" },
+  openGraph: {
+    title: "Tentang SelesainAja — Platform Jasa Pengerjaan Tugas #1 Indonesia",
+    description:
+      "Platform jasa pengerjaan tugas terpercaya. 2.500+ pelanggan puas, 10.000+ tugas selesai, rating 4.9/5.",
+    url: "https://selesainaja.com/about",
+  },
 }
 
 const values = [

@@ -6,8 +6,10 @@ import { buttonVariants } from "@/components/ui/button"
 import Link from "next/link"
 
 export const metadata: Metadata = {
-  title: "Daftar | SelesainAja",
-  description: "Buat akun SelesainAja untuk memudahkan pemesanan tugas akademik Anda.",
+  title: "Daftar — SelesainAja | Jasa Pengerjaan Tugas",
+  description:
+    "Daftar akun SelesainAja gratis. Dapatkan akses ke semua layanan jasa pengerjaan tugas: makalah, presentasi, jurnal, essay.",
+  robots: { index: false, follow: false },
 }
 
 export default function RegisterPage() {

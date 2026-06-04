@@ -3,28 +3,48 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { services } from "@/lib/constants";
 import Link from "next/link";
-import { RiArrowLeftLine, RiHomeLine, RiArrowRightSLine } from "react-icons/ri";
+import { RiArrowLeftLine } from "react-icons/ri";
 import ServiceDetailClient from "@/components/services/ServiceDetailClient";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const service = services.find(s => s.href === `/services/${slug}`);
-  
+
   if (!service) {
-    return {
-      title: "Layanan Tidak Ditemukan | SelesainAja",
-    };
+    return { title: "Layanan Tidak Ditemukan" };
   }
 
+  const priceShort = service.price.replace("Mulai Rp ", "").replace(".000", "K");
+  const title = `Jasa ${service.title} Profesional ⭐ Mulai ${priceShort}`;
+  const description = `Butuh jasa ${service.title.toLowerCase()}? Dikerjakan oleh tim profesional lulusan S2/S3. ✓ Bebas plagiat (Turnitin) ✓ Revisi gratis ✓ ${service.deliveryTime ?? "1-3 hari"} ✓ Format lengkap. Harga ${service.price}. Pesan sekarang!`;
+  const canonicalUrl = `https://selesainaja.com${service.href}`;
+
   return {
-    title: `${service.title} | Layanan SelesainAja`,
-    description: service.fullDescription || service.description,
+    title,
+    description,
+    keywords: [
+      `jasa ${service.title.toLowerCase()}`,
+      `harga jasa ${service.title.toLowerCase()}`,
+      `jasa ${service.title.toLowerCase()} online`,
+      `jasa ${service.title.toLowerCase()} terpercaya`,
+      "jasa pengerjaan tugas",
+      "joki tugas terpercaya",
+    ],
+    alternates: { canonical: canonicalUrl },
     openGraph: {
-      title: `${service.title} | Layanan SelesainAja`,
-      description: service.fullDescription || service.description,
+      title: `Jasa ${service.title} Profesional | SelesainAja`,
+      description: `Jasa ${service.title.toLowerCase()} berkualitas oleh tim profesional. Bebas plagiat, revisi gratis, harga ${service.price}.`,
+      url: canonicalUrl,
+      images: [{ url: `/og/services/${slug}.jpg`, width: 1200, height: 630, alt: `Jasa ${service.title} - SelesainAja` }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `Jasa ${service.title} Profesional | SelesainAja`,
+      description: `Jasa ${service.title.toLowerCase()} oleh tim profesional. Bebas plagiat, revisi gratis. ${service.price}.`,
     },
   };
 }
+
 
 export default async function ServiceDetail({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;

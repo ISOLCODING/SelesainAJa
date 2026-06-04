@@ -1,32 +1,26 @@
 import { MetadataRoute } from "next";
+import { services } from "@/lib/constants";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://selesainaja.com";
 
-  // In a real application, you would fetch dynamic routes from your CMS or database
-  const routes = [
-    "",
-    "/services/jasa-pembuatan-makalah",
-    "/services/jasa-pengerjaan-presentasi",
-    "/services/jasa-paper-ilmiah",
-    "/services/jasa-artikel-jurnal",
-    "/kategori/makalah",
-    "/kategori/presentasi",
-    "/kategori/paper",
-    "/area/jakarta",
-    "/area/surabaya",
-    "/area/bandung",
-    "/blog",
-    "/tentang-kami",
-    "/kontak",
+  const staticPages: MetadataRoute.Sitemap = [
+    { url: baseUrl,                          lastModified: new Date(), changeFrequency: "weekly",  priority: 1.0 },
+    { url: `${baseUrl}/services`,            lastModified: new Date(), changeFrequency: "weekly",  priority: 0.9 },
+    { url: `${baseUrl}/about`,               lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
+    { url: `${baseUrl}/contact`,             lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
+    { url: `${baseUrl}/faq`,                 lastModified: new Date(), changeFrequency: "weekly",  priority: 0.8 },
+    { url: `${baseUrl}/how-it-works`,        lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
+    { url: `${baseUrl}/blog`,                lastModified: new Date(), changeFrequency: "daily",   priority: 0.8 },
+    { url: `${baseUrl}/testimonials`,        lastModified: new Date(), changeFrequency: "weekly",  priority: 0.6 },
   ];
 
-  const sitemaps = routes.map((route) => ({
-    url: `${baseUrl}${route}`,
+  const servicePages: MetadataRoute.Sitemap = services.map((service) => ({
+    url: `${baseUrl}${service.href}`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
-    priority: route === "" ? 1 : 0.8,
+    priority: 0.85,
   }));
 
-  return sitemaps;
+  return [...staticPages, ...servicePages];
 }

@@ -2,8 +2,22 @@ import { Metadata } from "next"
 import { HowItWorksClient } from "@/components/how-it-works/HowItWorksClient"
 
 export const metadata: Metadata = {
-  title: "Cara Kerja | SelesainAja",
-  description: "Pelajari bagaimana proses pemesanan dan pengerjaan tugas di SelesainAja. Mudah, transparan, dan cepat.",
+  title: "Cara Order Jasa Pengerjaan Tugas — Mudah & Cepat",
+  description:
+    "Cara pesan jasa pengerjaan tugas di SelesainAja: 1) Konsultasi via WhatsApp 2) Deal & pembayaran 3) Tim mengerjakan 4) Terima hasil & revisi. Proses mudah!",
+  keywords: [
+    "cara order jasa pengerjaan tugas",
+    "cara pesan jasa makalah",
+    "proses jasa tugas kuliah",
+    "langkah pesan jasa akademik",
+  ],
+  alternates: { canonical: "https://selesainaja.com/how-it-works" },
+  openGraph: {
+    title: "Cara Order Jasa Pengerjaan Tugas — Mudah & Cepat | SelesainAja",
+    description:
+      "4 langkah mudah: Konsultasi → Deal & bayar → Pengerjaan → Terima hasil. Proses transparan & cepat!",
+    url: "https://selesainaja.com/how-it-works",
+  },
 }
 
 export default function HowItWorksPage() {

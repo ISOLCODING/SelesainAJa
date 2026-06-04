@@ -10,8 +10,22 @@ import { Textarea } from "@/components/ui/textarea"
 import Link from "next/link"
 
 export const metadata: Metadata = {
-  title: "Hubungi Kami | SelesainAja",
-  description: "Hubungi tim customer service SelesainAja untuk konsultasi gratis mengenai jasa pengerjaan makalah, tugas kuliah, dan presentasi PPT. Fast response 24/7.",
+  title: "Hubungi SelesainAja — Konsultasi Gratis Jasa Pengerjaan Tugas",
+  description:
+    "Punya pertanyaan? Hubungi tim SelesainAja via WhatsApp, email, atau form kontak. Konsultasi gratis! Response < 5 menit. Tersedia 24/7.",
+  keywords: [
+    "kontak selesainaja",
+    "konsultasi jasa pengerjaan tugas",
+    "whatsapp jasa tugas kuliah",
+    "customer service jasa akademik",
+  ],
+  alternates: { canonical: "https://selesainaja.com/contact" },
+  openGraph: {
+    title: "Hubungi SelesainAja — Konsultasi Gratis Jasa Pengerjaan Tugas",
+    description:
+      "Hubungi tim kami via WhatsApp, email, atau form kontak. Konsultasi gratis, response < 5 menit, 24/7.",
+    url: "https://selesainaja.com/contact",
+  },
 }
 
 import { contactInfo } from "@/lib/data/contact"
