@@ -82,17 +82,6 @@ export function Header() {
               <Phone className="w-4 h-4" />
               <span>0812-XXXX-XXXX</span>
             </Link>
-            <Link href="/login">
-              <Button variant="ghost" size="sm">
-                Masuk
-              </Button>
-            </Link>
-            <Link href="/register">
-              <Button size="sm" className="bg-[#0066FF] hover:bg-[#0052CC] rounded-lg">
-                Daftar Gratis
-                <ArrowRight className="ml-1.5 w-4 h-4" />
-              </Button>
-            </Link>
           </div>
 
           {/* Mobile Menu */}
@@ -138,17 +127,6 @@ export function Header() {
                     )
                   })}
                 </nav>
-                <div className="p-4 border-t border-[#E4E4E7] space-y-2">
-                  <Link href="/login" onClick={() => setIsMobileOpen(false)}>
-                    <Button variant="outline" className="w-full">Masuk</Button>
-                  </Link>
-                  <Link href="/register" onClick={() => setIsMobileOpen(false)}>
-                    <Button className="w-full bg-[#0066FF] hover:bg-[#0052CC]">
-                      Daftar Gratis
-                      <ArrowRight className="ml-1.5 w-4 h-4" />
-                    </Button>
-                  </Link>
-                </div>
               </div>
             </SheetContent>
           </Sheet>
