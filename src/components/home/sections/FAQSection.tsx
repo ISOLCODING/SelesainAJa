@@ -50,7 +50,7 @@ export function FAQSection() {
           >
             <div className="relative aspect-square w-full max-w-lg mx-auto rounded-[2.5rem] overflow-hidden shadow-2xl">
               <Image 
-                src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1000&auto=format&fit=crop" 
+                src="/images/faq.png" 
                 alt="FAQ SelesainAja"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
