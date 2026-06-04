@@ -43,12 +43,10 @@ const steps = [
 ]
 
 const payments = [
-  { name: "BCA", color: "#0066AE", svg: <svg viewBox="0 0 100 30" className="h-8 md:h-10"><text x="50" y="22" fill="#0066AE" fontWeight="900" fontSize="28" fontFamily="Arial, sans-serif" textAnchor="middle">BCA</text></svg> },
-  { name: "BRI", color: "#00529C", svg: <svg viewBox="0 0 100 30" className="h-8 md:h-10"><text x="50" y="22" fill="#00529C" fontWeight="900" fontSize="28" fontFamily="Arial, sans-serif" textAnchor="middle">BRI</text></svg> },
-  { name: "Bank DKI", color: "#E8302D", svg: <svg viewBox="0 0 120 30" className="h-8 md:h-10"><text x="60" y="22" fill="#E8302D" fontWeight="900" fontSize="24" fontFamily="Arial, sans-serif" textAnchor="middle">Bank DKI</text></svg> },
-  { name: "SeaBank", color: "#FF7020", svg: <svg viewBox="0 0 120 30" className="h-8 md:h-10"><text x="60" y="22" fill="#FF7020" fontWeight="900" fontSize="24" fontFamily="Arial, sans-serif" textAnchor="middle">SeaBank</text></svg> },
-  { name: "DANA", color: "#118EEA", svg: <svg viewBox="0 0 100 30" className="h-8 md:h-10"><text x="50" y="22" fill="#118EEA" fontWeight="900" fontSize="26" fontFamily="Arial, sans-serif" textAnchor="middle">DANA</text></svg> },
-  { name: "OVO", color: "#4C3494", svg: <svg viewBox="0 0 100 30" className="h-8 md:h-10"><text x="50" y="22" fill="#4C3494" fontWeight="900" fontSize="28" fontFamily="Arial, sans-serif" textAnchor="middle">OVO</text></svg> },
+  { name: "BCA", svg: <img src="/images/payments/bca.png" alt="BCA" className="h-10 md:h-12 w-auto object-contain" /> },
+  { name: "BRI", svg: <img src="/images/payments/bri.png" alt="BRI" className="h-10 md:h-12 w-auto object-contain" /> },
+  { name: "Bank DKI", svg: <img src="/images/payments/bank-dki.png" alt="Bank DKI" className="h-10 md:h-12 w-auto object-contain" /> },
+  { name: "DANA", svg: <img src="/images/payments/dana.png" alt="DANA" className="h-10 md:h-12 w-auto object-contain" /> },
 ]
 
 export function HowItWorksClient() {
@@ -197,7 +195,7 @@ export function HowItWorksClient() {
                 Mendukung berbagai metode pembayaran bank lokal dan e-wallet terpercaya untuk kenyamanan dan keamanan transaksi Anda.
               </p>
               
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
                 {payments.map((payment) => (
                   <div 
                     key={payment.name} 

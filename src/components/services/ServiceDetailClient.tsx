@@ -35,65 +35,10 @@ if (typeof window !== "undefined") {
 }
 
 const paymentMethods = [
-  {
-    name: "BCA",
-    svg: (
-      <svg viewBox="0 0 100 30" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-16 h-auto">
-        <path d="M15 5H45V25H15V5Z" fill="#005DAA" />
-        <text x="50" y="22" fontFamily="Arial, sans-serif" fontSize="22" fill="#005DAA" fontWeight="900" fontStyle="italic">BCA</text>
-        <circle cx="25" cy="15" r="5" fill="white" />
-      </svg>
-    ),
-  },
-  {
-    name: "BRI",
-    svg: (
-      <svg viewBox="0 0 100 30" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-16 h-auto">
-        <path d="M10 10H30V25H10V10Z" fill="#00529C" />
-        <path d="M20 5L30 15H10L20 5Z" fill="#F37021" />
-        <text x="40" y="22" fontFamily="Arial, sans-serif" fontSize="22" fill="#00529C" fontWeight="900">BRI</text>
-      </svg>
-    ),
-  },
-  {
-    name: "Bank DKI",
-    svg: (
-      <svg viewBox="0 0 120 30" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-20 h-auto">
-        <rect x="5" y="5" width="20" height="20" fill="#D32F2F" rx="4" />
-        <circle cx="15" cy="15" r="5" fill="white" />
-        <text x="35" y="22" fontFamily="Arial, sans-serif" fontSize="20" fill="#D32F2F" fontWeight="900">Bank DKI</text>
-      </svg>
-    ),
-  },
-  {
-    name: "SeaBank",
-    svg: (
-      <svg viewBox="0 0 120 30" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-20 h-auto">
-        <circle cx="15" cy="15" r="12" fill="#FF7043" />
-        <path d="M10 15C10 12 15 10 20 15C25 20 20 22 15 15Z" fill="white" stroke="white" strokeWidth="2" />
-        <text x="35" y="22" fontFamily="Arial, sans-serif" fontSize="20" fill="#FF7043" fontWeight="900">SeaBank</text>
-      </svg>
-    ),
-  },
-  {
-    name: "DANA",
-    svg: (
-      <svg viewBox="0 0 100 30" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-16 h-auto">
-        <path d="M10 5H30C40 5 45 10 45 15C45 20 40 25 30 25H10V5Z" fill="#118EE9" />
-        <text x="50" y="22" fontFamily="Arial, sans-serif" fontSize="22" fill="#118EE9" fontWeight="900">DANA</text>
-      </svg>
-    ),
-  },
-  {
-    name: "GoPay",
-    svg: (
-      <svg viewBox="0 0 100 30" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-16 h-auto">
-        <circle cx="20" cy="15" r="10" fill="#00AED6" />
-        <circle cx="20" cy="15" r="5" fill="white" />
-        <text x="35" y="22" fontFamily="Arial, sans-serif" fontSize="20" fill="#00AED6" fontWeight="900">gopay</text>
-      </svg>
-    ),
-  },
+  { name: "BCA", svg: <img src="/images/payments/bca.png" alt="BCA" className="h-8 w-auto object-contain" /> },
+  { name: "BRI", svg: <img src="/images/payments/bri.png" alt="BRI" className="h-8 w-auto object-contain" /> },
+  { name: "Bank DKI", svg: <img src="/images/payments/bank-dki.png" alt="Bank DKI" className="h-8 w-auto object-contain" /> },
+  { name: "DANA", svg: <img src="/images/payments/dana.png" alt="DANA" className="h-8 w-auto object-contain" /> },
 ];
 
 const generalFaqs = [
