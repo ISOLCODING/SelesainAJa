@@ -45,10 +45,10 @@ export function Header() {
             <Image 
               src="/images/Logo.png" 
               alt="SelesainAja Logo" 
-              width={240} 
-              height={60} 
+              width={200} 
+              height={100} 
               priority
-              className="h-10 md:h-12 lg:h-14 w-auto object-contain group-hover:scale-105 transition-transform origin-left"
+              className="h-12 md:h-16 lg:h-20 w-auto object-contain group-hover:scale-105 transition-transform origin-left"
             />
           </Link>
 
