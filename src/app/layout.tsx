@@ -175,7 +175,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="id" className={`scroll-smooth ${roboto.variable}`} suppressHydrationWarning>
-      <body className="font-sans antialiased bg-[#FAFAFA] text-[#0A0A0B]" suppressHydrationWarning>
+      <body className="font-sans antialiased bg-[#FAFAFA] text-[#0A0A0B] min-h-screen flex flex-col" suppressHydrationWarning>
         <TooltipProvider>
           {children}
         </TooltipProvider>
