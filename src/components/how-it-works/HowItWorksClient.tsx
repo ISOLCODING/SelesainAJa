@@ -43,10 +43,10 @@ const steps = [
 ]
 
 const payments = [
-  { name: "BCA", svg: <img src="/images/payments/bca.png" alt="BCA" className="max-h-12 md:max-h-14 w-auto max-w-full object-contain drop-shadow-sm" /> },
-  { name: "BRI", svg: <img src="/images/payments/bri.png" alt="BRI" className="max-h-12 md:max-h-14 w-auto max-w-full object-contain drop-shadow-sm" /> },
-  { name: "Bank DKI", svg: <img src="/images/payments/bank-dki.png" alt="Bank DKI" className="max-h-12 md:max-h-14 w-auto max-w-full object-contain drop-shadow-sm" /> },
-  { name: "DANA", svg: <img src="/images/payments/dana.png" alt="DANA" className="max-h-12 md:max-h-14 w-auto max-w-full object-contain drop-shadow-sm" /> },
+  { name: "BCA", svg: <img src="/images/payments/bca-new.png" alt="BCA" className="max-h-10 md:max-h-12 w-auto max-w-full object-contain" /> },
+  { name: "BRI", svg: <img src="/images/payments/bri-new.png" alt="BRI" className="max-h-10 md:max-h-12 w-auto max-w-full object-contain" /> },
+  { name: "DANA", svg: <img src="/images/payments/dana-new.png" alt="DANA" className="max-h-10 md:max-h-12 w-auto max-w-full object-contain" /> },
+  { name: "LinkAja", svg: <img src="/images/payments/linkaja-new.png" alt="LinkAja" className="max-h-10 md:max-h-12 w-auto max-w-full object-contain" /> },
 ]
 
 export function HowItWorksClient() {
@@ -189,10 +189,10 @@ export function HowItWorksClient() {
 
             <div className="relative z-10">
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-black font-jakarta text-white mb-8 tracking-tight leading-tight">
-                Fleksibilitas <br className="md:hidden" /> Pembayaran
+                Metode Pembayaran
               </h2>
-              <p className="text-white/80 text-lg md:text-xl max-w-2xl mx-auto mb-16 font-medium">
-                Mendukung berbagai metode pembayaran bank lokal dan e-wallet terpercaya untuk kenyamanan dan keamanan transaksi Anda.
+              <p className="text-white/80 text-lg md:text-xl max-w-3xl mx-auto mb-16 font-medium leading-relaxed">
+                Kamu masih bingung metode pembayaran apa saja yang dapat digunakan saat order joki tugas di Buatin Tugasku? Jangan khawatir, ada banyak metode pembayaran kok! Pembayaran dapat dilakukan melalui Transfer Bank
               </p>
               
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">

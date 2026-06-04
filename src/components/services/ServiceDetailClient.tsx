@@ -35,10 +35,10 @@ if (typeof window !== "undefined") {
 }
 
 const paymentMethods = [
-  { name: "BCA", svg: <img src="/images/payments/bca.png" alt="BCA" className="h-10 w-auto object-contain drop-shadow-sm" /> },
-  { name: "BRI", svg: <img src="/images/payments/bri.png" alt="BRI" className="h-10 w-auto object-contain drop-shadow-sm" /> },
-  { name: "Bank DKI", svg: <img src="/images/payments/bank-dki.png" alt="Bank DKI" className="h-10 w-auto object-contain drop-shadow-sm" /> },
-  { name: "DANA", svg: <img src="/images/payments/dana.png" alt="DANA" className="h-10 w-auto object-contain drop-shadow-sm" /> },
+  { name: "BCA", svg: <img src="/images/payments/bca-new.png" alt="BCA" className="h-8 w-auto object-contain" /> },
+  { name: "BRI", svg: <img src="/images/payments/bri-new.png" alt="BRI" className="h-8 w-auto object-contain" /> },
+  { name: "DANA", svg: <img src="/images/payments/dana-new.png" alt="DANA" className="h-8 w-auto object-contain" /> },
+  { name: "LinkAja", svg: <img src="/images/payments/linkaja-new.png" alt="LinkAja" className="h-8 w-auto object-contain" /> },
 ];
 
 const generalFaqs = [
