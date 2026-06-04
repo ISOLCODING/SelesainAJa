@@ -1,7 +1,6 @@
 import { Metadata } from "next"
 import { Header } from "@/components/layout/Header"
 import { Footer } from "@/components/layout/Footer"
-import { Footer } from "@/components/layout/Footer"
 import { PageHeader } from "@/components/layout/PageHeader"
 import { ServicesSection } from "@/components/home/sections/ServicesSection"
 import JsonLd from "@/components/seo/JsonLd"
