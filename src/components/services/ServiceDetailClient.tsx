@@ -35,10 +35,10 @@ if (typeof window !== "undefined") {
 }
 
 const paymentMethods = [
-  { name: "BCA", svg: <img src="/images/payments/bca.png" alt="BCA" className="h-8 w-auto object-contain" /> },
-  { name: "BRI", svg: <img src="/images/payments/bri.png" alt="BRI" className="h-8 w-auto object-contain" /> },
-  { name: "Bank DKI", svg: <img src="/images/payments/bank-dki.png" alt="Bank DKI" className="h-8 w-auto object-contain" /> },
-  { name: "DANA", svg: <img src="/images/payments/dana.png" alt="DANA" className="h-8 w-auto object-contain" /> },
+  { name: "BCA", svg: <img src="/images/payments/bca.png" alt="BCA" className="h-10 w-auto object-contain drop-shadow-sm" /> },
+  { name: "BRI", svg: <img src="/images/payments/bri.png" alt="BRI" className="h-10 w-auto object-contain drop-shadow-sm" /> },
+  { name: "Bank DKI", svg: <img src="/images/payments/bank-dki.png" alt="Bank DKI" className="h-10 w-auto object-contain drop-shadow-sm" /> },
+  { name: "DANA", svg: <img src="/images/payments/dana.png" alt="DANA" className="h-10 w-auto object-contain drop-shadow-sm" /> },
 ];
 
 const generalFaqs = [
@@ -350,9 +350,11 @@ export default function ServiceDetailClient({
               {paymentMethods.map((pm, i) => (
                 <div
                   key={i}
-                  className="h-16 bg-slate-50 rounded-2xl border border-slate-100 hover:border-primary/20 flex items-center justify-center p-3 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 cursor-pointer"
+                  className="h-20 bg-white rounded-2xl border border-slate-100 hover:border-primary/20 shadow-sm flex items-center justify-center p-4 hover:-translate-y-1 hover:shadow-md transition-all duration-300 cursor-pointer"
                 >
-                  {pm.svg}
+                  <div className="scale-95 hover:scale-105 transition-transform duration-300 w-full flex justify-center">
+                    {pm.svg}
+                  </div>
                 </div>
               ))}
             </div>

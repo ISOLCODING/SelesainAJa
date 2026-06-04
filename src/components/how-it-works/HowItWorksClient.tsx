@@ -43,10 +43,10 @@ const steps = [
 ]
 
 const payments = [
-  { name: "BCA", svg: <img src="/images/payments/bca.png" alt="BCA" className="h-10 md:h-12 w-auto object-contain" /> },
-  { name: "BRI", svg: <img src="/images/payments/bri.png" alt="BRI" className="h-10 md:h-12 w-auto object-contain" /> },
-  { name: "Bank DKI", svg: <img src="/images/payments/bank-dki.png" alt="Bank DKI" className="h-10 md:h-12 w-auto object-contain" /> },
-  { name: "DANA", svg: <img src="/images/payments/dana.png" alt="DANA" className="h-10 md:h-12 w-auto object-contain" /> },
+  { name: "BCA", svg: <img src="/images/payments/bca.png" alt="BCA" className="max-h-12 md:max-h-14 w-auto max-w-full object-contain drop-shadow-sm" /> },
+  { name: "BRI", svg: <img src="/images/payments/bri.png" alt="BRI" className="max-h-12 md:max-h-14 w-auto max-w-full object-contain drop-shadow-sm" /> },
+  { name: "Bank DKI", svg: <img src="/images/payments/bank-dki.png" alt="Bank DKI" className="max-h-12 md:max-h-14 w-auto max-w-full object-contain drop-shadow-sm" /> },
+  { name: "DANA", svg: <img src="/images/payments/dana.png" alt="DANA" className="max-h-12 md:max-h-14 w-auto max-w-full object-contain drop-shadow-sm" /> },
 ]
 
 export function HowItWorksClient() {
@@ -199,9 +199,9 @@ export function HowItWorksClient() {
                 {payments.map((payment) => (
                   <div 
                     key={payment.name} 
-                    className="bg-white/95 backdrop-blur-sm rounded-[1.5rem] aspect-[4/3] flex items-center justify-center p-6 hover:-translate-y-2 hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.2)] transition-all duration-400 cursor-pointer group"
+                    className="bg-white/95 backdrop-blur-sm rounded-[1.5rem] h-24 md:h-28 flex items-center justify-center p-4 md:p-6 hover:-translate-y-2 hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.2)] transition-all duration-400 cursor-pointer group border border-white/50"
                   >
-                    <div className="grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 scale-95 group-hover:scale-105 transition-all duration-400">
+                    <div className="scale-95 group-hover:scale-105 transition-transform duration-400 flex items-center justify-center w-full h-full">
                       {payment.svg}
                     </div>
                   </div>
