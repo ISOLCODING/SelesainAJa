@@ -65,137 +65,159 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="relative bg-[#0A0A0B] text-white overflow-hidden pt-20 md:pt-32 pb-8 border-t border-white/5">
+    <footer className="relative bg-gradient-to-br from-[#0F1C3F] via-[#172554] to-[#1E3A8A] text-white overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-[#1591DC]/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-[#4BB8FA]/10 rounded-full blur-3xl translate-x-1/4 translate-y-1/4 pointer-events-none" />
       
-      {/* Abstract Glowing Accent */}
-      <div className="absolute top-0 right-1/4 w-[800px] h-[400px] bg-[#1591DC] rounded-full blur-[150px] opacity-[0.05] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#4BB8FA] rounded-full blur-[150px] opacity-[0.04] pointer-events-none" />
+      {/* Grid dot pattern */}
+      <div 
+        className="absolute inset-0 opacity-[0.04] pointer-events-none"
+        style={{
+          backgroundImage: "radial-gradient(circle, #ffffff 1px, transparent 1px)",
+          backgroundSize: "28px 28px"
+        }}
+      />
 
-      <div className="container-custom relative z-10">
+      <div className="container-custom relative z-10 pt-16 pb-0">
         
-        {/* Top Massive CTA Area */}
-        <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-10 mb-20 pb-20 border-b border-white/10">
-          <div className="max-w-2xl">
-            <h2 className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-[1.05] mb-6 uppercase" style={{ fontFamily: "var(--font-batica)" }}>
-              PUNYA <span className="text-[#1591DC]">TUGAS</span><br />
-              YANG PERLU DIBERESIN?
-            </h2>
-            <p className="text-xl text-white/60 font-medium leading-relaxed">
-              Tim ahli kami siap membantu Anda menyelesaikan tugas dengan cepat, rahasia, dan berkualitas tinggi.
-            </p>
+        {/* Newsletter Banner */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 md:p-8 mb-16 flex flex-col md:flex-row items-center justify-between gap-6"
+        >
+          <div>
+            <h3 className="text-lg md:text-xl font-black text-white mb-1">Dapatkan Update & Promo Terbaru! 🎉</h3>
+            <p className="text-white/60 text-sm">Subscribe newsletter kami dan nikmati diskon eksklusif setiap minggu.</p>
           </div>
-          <a 
-            href="https://wa.me/6281112345678" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="group inline-flex items-center gap-5 bg-white hover:bg-[#1591DC] text-[#0A0A0B] hover:text-white px-8 py-5 md:px-10 md:py-6 rounded-full font-black text-xl transition-all duration-300 hover:scale-[1.02] shadow-[0_0_40px_rgba(255,255,255,0.1)] hover:shadow-[0_0_50px_rgba(21,145,220,0.3)] shrink-0"
-          >
-            HUBUNGI KAMI 
-            <div className="w-12 h-12 rounded-full bg-[#0A0A0B]/10 flex items-center justify-center group-hover:bg-white/20 transition-colors">
-              <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
-            </div>
-          </a>
-        </div>
+          <div className="flex w-full md:w-auto gap-2 shrink-0">
+            <input
+              type="email"
+              placeholder="email@kamu.com"
+              className="flex-1 md:w-64 bg-white/10 border border-white/20 text-white placeholder:text-white/40 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-[#4BB8FA] transition-colors"
+            />
+            <button className="bg-[#1591DC] hover:bg-[#0d7ab5] text-white rounded-xl px-4 py-2.5 font-bold text-sm flex items-center gap-2 transition-colors shrink-0">
+              <Send className="w-4 h-4" /> Kirim
+            </button>
+          </div>
+        </motion.div>
 
         {/* Main Footer Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 pb-16">
+        <div className="flex flex-col lg:flex-row gap-12 pb-16 border-b border-white/10">
           
-          {/* Brand Info */}
-          <div className="lg:col-span-4 flex flex-col items-start">
-            <Link href="/" className="mb-10 block group">
+          {/* Brand Column (Logo Kiri, Info Kanan) */}
+          <div className="lg:w-[55%] flex flex-col sm:flex-row gap-8 items-start">
+            {/* Logo area */}
+            <Link href="/" className="shrink-0 group sm:w-[220px]">
               <Image 
                 src="/images/Logo.png" 
                 alt="SelesainAja Logo" 
                 width={200} 
                 height={50} 
-                className="h-12 w-auto object-contain brightness-0 invert group-hover:opacity-80 transition-opacity" 
+                className="h-12 md:h-14 w-auto object-contain group-hover:scale-105 transition-transform origin-left brightness-0 invert" 
               />
             </Link>
-            <p className="text-white/60 text-lg leading-relaxed mb-8 max-w-sm font-medium">
-              Platform jasa pengerjaan tugas akademik profesional #1 Indonesia. Tim ahli, kualitas terjamin, harga transparan.
-            </p>
-            <div className="space-y-4 w-full">
-              {[
-                { icon: Mail, text: "support@selesainaja.com" },
-                { icon: Phone, text: "0812-XXXX-XXXX" },
-                { icon: MapPin, text: "Jakarta, Indonesia" },
-              ].map(({ icon: Icon, text }, i) => (
-                <div key={i} className="flex items-center gap-4 text-white/70 group w-fit cursor-pointer">
-                  <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-[#1591DC] group-hover:border-[#1591DC] transition-colors shadow-sm">
-                    <Icon className="w-5 h-5 group-hover:text-white text-[#4BB8FA] transition-colors" />
+            
+            {/* Information area */}
+            <div className="flex-1 border-l-0 sm:border-l sm:border-white/10 sm:pl-8">
+              <p className="text-sm text-white/60 mb-6 leading-relaxed max-w-sm">
+                Platform jasa pengerjaan tugas akademik profesional #1 Indonesia. Tim ahli, kualitas terjamin, harga transparan.
+              </p>
+              
+              <div className="space-y-4">
+                {[
+                  { icon: Mail, text: "support@selesainaja.com" },
+                  { icon: Phone, text: "0812-XXXX-XXXX" },
+                  { icon: MapPin, text: "Jakarta, Indonesia" },
+                ].map(({ icon: Icon, text }, i) => (
+                  <div key={i} className="flex items-center gap-4 text-sm text-white/60 group cursor-pointer w-fit">
+                    <div className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-[#1591DC] group-hover:border-[#1591DC] transition-colors shrink-0 shadow-sm">
+                      <Icon className="w-4 h-4 text-[#4BB8FA] group-hover:text-white transition-colors" />
+                    </div>
+                    <span className="font-medium group-hover:text-white transition-colors">{text}</span>
                   </div>
-                  <span className="font-semibold text-base group-hover:text-white transition-colors">{text}</span>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
 
-          {/* Links: Layanan */}
-          <div className="lg:col-span-3 lg:col-start-6">
-            <h4 className="text-sm font-black text-white uppercase tracking-widest mb-8 flex items-center gap-3">
-              <span className="w-2 h-2 bg-[#1591DC] rounded-full" /> Layanan
-            </h4>
-            <ul className="space-y-4">
-              {services.slice(0, 5).map((link) => (
-                <li key={link.title}>
-                  <Link href={link.href} className="text-white/60 hover:text-[#4BB8FA] transition-colors font-medium flex items-center gap-3 group text-lg">
-                    <ArrowRight className="w-4 h-4 opacity-0 -ml-7 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300 text-[#1591DC]" />
-                    {link.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Links: Perusahaan */}
-          <div className="lg:col-span-2">
-            <h4 className="text-sm font-black text-white uppercase tracking-widest mb-8 flex items-center gap-3">
-              <span className="w-2 h-2 bg-[#1591DC] rounded-full" /> Perusahaan
-            </h4>
-            <ul className="space-y-4">
-              {footerLinks.company.map((link) => (
-                <li key={link.name}>
-                  <Link href={link.href} className="text-white/60 hover:text-[#4BB8FA] transition-colors font-medium flex items-center gap-3 group text-lg">
-                    <ArrowRight className="w-4 h-4 opacity-0 -ml-7 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300 text-[#1591DC]" />
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Links: Legal */}
-          <div className="lg:col-span-2">
-            <h4 className="text-sm font-black text-white uppercase tracking-widest mb-8 flex items-center gap-3">
-              <span className="w-2 h-2 bg-[#1591DC] rounded-full" /> Legal
-            </h4>
-            <ul className="space-y-4 mb-10">
-              {footerLinks.legal.map((link) => (
-                <li key={link.name}>
-                  <Link href={link.href} className="text-white/60 hover:text-[#4BB8FA] transition-colors font-medium flex items-center gap-3 group text-lg">
-                    <ArrowRight className="w-4 h-4 opacity-0 -ml-7 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300 text-[#1591DC]" />
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <div className="flex flex-col gap-3">
-              <span className="text-xs font-black tracking-wider text-[#4BB8FA] bg-[#1591DC]/10 border border-[#1591DC]/20 px-4 py-2 rounded-full inline-flex items-center w-fit gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#4BB8FA]" /> 100% AMAN
-              </span>
-              <span className="text-xs font-black tracking-wider text-[#4BB8FA] bg-[#1591DC]/10 border border-[#1591DC]/20 px-4 py-2 rounded-full inline-flex items-center w-fit gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#4BB8FA]" /> BEBAS PLAGIASI
-              </span>
+          {/* Links Columns */}
+          <div className="lg:w-[45%] grid grid-cols-2 md:grid-cols-3 gap-8">
+            
+            {/* Layanan */}
+            <div>
+              <h4 className="text-xs font-black text-white/40 uppercase tracking-[0.15em] mb-6 flex items-center gap-2">
+                Layanan
+              </h4>
+              <ul className="space-y-4">
+                {services.slice(0, 5).map((link) => (
+                  <li key={link.title}>
+                    <Link href={link.href} className="group flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#1591DC] group-hover:scale-150 transition-transform" />
+                      {link.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
+
+            {/* Perusahaan */}
+            <div>
+              <h4 className="text-xs font-black text-white/40 uppercase tracking-[0.15em] mb-6 flex items-center gap-2">
+                Perusahaan
+              </h4>
+              <ul className="space-y-4">
+                {footerLinks.company.map((link) => (
+                  <li key={link.name}>
+                    <Link href={link.href} className="group flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#1591DC] group-hover:scale-150 transition-transform" />
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Legal */}
+            <div className="col-span-2 md:col-span-1 mt-4 md:mt-0">
+              <h4 className="text-xs font-black text-white/40 uppercase tracking-[0.15em] mb-6 flex items-center gap-2">
+                Legal
+              </h4>
+              <ul className="space-y-4 mb-8">
+                {footerLinks.legal.map((link) => (
+                  <li key={link.name}>
+                    <Link href={link.href} className="group flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#1591DC] group-hover:scale-150 transition-transform" />
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+
+              {/* Trust Badges */}
+              <div className="flex flex-col gap-2 w-fit">
+                <span className="text-[10px] font-bold text-[#4BB8FA] bg-[#1591DC]/15 border border-[#1591DC]/30 px-3 py-1.5 rounded-full">
+                  ✓ 100% Aman
+                </span>
+                <span className="text-[10px] font-bold text-[#4BB8FA] bg-[#1591DC]/15 border border-[#1591DC]/30 px-3 py-1.5 rounded-full">
+                  ✓ Bebas Plagiasi
+                </span>
+              </div>
+            </div>
+
           </div>
         </div>
 
-        {/* Bottom Giant Text & Copyright */}
-        <div className="border-t border-white/10 pt-10 flex flex-col lg:flex-row items-center justify-between gap-8">
-          <p className="text-base text-white/40 font-medium">
-            © {new Date().getFullYear()} SelesainAja. Dibuat di Indonesia.
+        {/* Bottom Bar */}
+        <div className="py-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <p className="text-sm text-white/40 font-medium text-center sm:text-left">
+            © {new Date().getFullYear()} SelesainAja. Dibuat dengan ❤️ di Indonesia.
           </p>
-          <div className="flex items-center gap-4">
+
+          {/* Social Icons */}
+          <div className="flex items-center gap-3">
             {socialLinks.map((social) => (
               <a
                 key={social.label}
@@ -203,21 +225,13 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.label}
-                className={`w-14 h-14 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/60 hover:text-white ${social.hoverClass} hover:border-transparent transition-all duration-300 hover:scale-110 shadow-sm`}
+                className={`w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/60 hover:text-white ${social.hoverClass} hover:border-transparent transition-all duration-300 hover:scale-110 shadow-sm`}
               >
                 {social.svg}
               </a>
             ))}
           </div>
         </div>
-        
-        {/* Massive Watermark */}
-        <div className="mt-16 text-center overflow-hidden select-none pointer-events-none opacity-[0.02] flex justify-center">
-          <h1 className="text-[13vw] font-black uppercase tracking-tighter leading-none whitespace-nowrap" style={{ fontFamily: "var(--font-batica)" }}>
-            SELESAINAJA
-          </h1>
-        </div>
-
       </div>
     </footer>
   )
