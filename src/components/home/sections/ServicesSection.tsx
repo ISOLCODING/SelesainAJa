@@ -231,55 +231,88 @@ export function ServicesSection() {
           ))}
         </div>
 
-        {/* Global CTA Section within Services - Swiss Modernist Layout */}
+        {/* Global CTA Section within Services - Interactive Layout */}
         <div className="mt-32 max-w-7xl mx-auto px-4 md:px-6">
-          <div className="bg-[#0A0A0B] rounded-[2rem] md:rounded-[3rem] p-10 md:p-16 lg:p-20 relative overflow-hidden border border-[#27272A] shadow-2xl">
-            {/* Subtle Modern Accent */}
-            <div className="absolute top-0 right-0 w-full md:w-1/2 h-full bg-gradient-to-l from-[#1591DC]/10 to-transparent pointer-events-none" />
-            <div className="absolute -top-40 -right-40 w-80 h-80 bg-[#1591DC] rounded-full blur-[120px] opacity-20 pointer-events-none" />
-            
-            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-              
-              {/* Left Column: Massive Typography */}
-              <div className="lg:col-span-7">
-                <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-[#4BB8FA] text-sm font-bold mb-8 uppercase tracking-[0.2em]">
-                  <span className="w-2 h-2 rounded-full bg-[#4BB8FA] animate-pulse" />
-                  Layanan Kustom
-                </div>
-                <h3 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white tracking-tighter leading-[1.05] uppercase text-balance" style={{ fontFamily: "var(--font-batica)" }}>
-                  TUGAS <span className="text-[#1591DC]">SPESIFIK</span><br />
-                  BUTUH SOLUSI<br />
-                  <span className="text-[#E4E4E7]">SPESIFIK.</span>
-                </h3>
-              </div>
-              
-              {/* Right Column: Content & CTA */}
-              <div className="lg:col-span-5 flex flex-col items-start lg:pl-12 lg:border-l border-white/10 pt-4 lg:pt-0">
-                <div className="w-14 h-14 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center mb-8">
-                  <BiBriefcase className="text-2xl text-[#4BB8FA]" />
-                </div>
-                <p className="text-lg md:text-xl text-[#A1A1AA] font-medium leading-relaxed mb-10 max-w-md">
-                  Tidak menemukan layanan yang pas di katalog kami? Konsultasikan format, deadline, dan ekspektasi Anda secara langsung. Tim spesialis kami siap beradaptasi.
-                </p>
-                
-                <a 
-                  href="https://wa.me/6281112345678?text=Halo%20Admin%20SelesainAja,%20saya%20ingin%20konsultasi%20mengenai%20layanan%20kustom"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative inline-flex items-center justify-between w-full sm:w-auto gap-8 bg-white text-[#0A0A0B] py-4 px-6 md:py-5 md:px-8 rounded-full font-black text-lg transition-all duration-300 hover:bg-[#1591DC] hover:text-white hover:scale-[1.02] shadow-[0_0_40px_rgba(255,255,255,0.1)] hover:shadow-[0_0_40px_rgba(21,145,220,0.3)]"
-                >
-                  <span className="uppercase tracking-widest text-sm md:text-base">Mulai Diskusi</span>
-                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#0A0A0B]/10 group-hover:bg-white/20 flex items-center justify-center transition-colors">
-                    <BiChat className="text-lg md:text-xl" />
-                  </div>
-                </a>
-              </div>
-              
-            </div>
-          </div>
+          <InteractiveCTA />
         </div>
 
       </div>
     </SectionWrapper>
   )
 }
+
+const InteractiveCTA = () => {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    setMousePos({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
+  };
+
+  return (
+    <div 
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      className="group relative bg-[#0b3e84] rounded-[2rem] md:rounded-[3rem] p-10 md:p-16 lg:p-20 overflow-hidden border border-white/10 shadow-2xl transition-transform duration-700 hover:-translate-y-2 hover:shadow-[0_20px_60px_-15px_rgba(11,62,132,0.5)] cursor-default"
+    >
+      {/* Interactive Glow Spotlight */}
+      <div 
+        className="pointer-events-none absolute -inset-px rounded-[inherit] opacity-0 transition duration-300 group-hover:opacity-100 z-0"
+        style={{
+          background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, rgba(255, 255, 255, 0.15), transparent 40%)`
+        }}
+      />
+
+      {/* Decorative Background Elements */}
+      <div className="absolute top-0 right-0 w-full md:w-1/2 h-full bg-gradient-to-l from-[#4BB8FA]/20 to-transparent pointer-events-none z-0" />
+      <div className="absolute -top-40 -right-40 w-80 h-80 bg-[#4BB8FA] rounded-full blur-[100px] opacity-20 pointer-events-none group-hover:opacity-40 transition-opacity duration-700 z-0" />
+      
+      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        
+        {/* Left Column: Massive Typography */}
+        <div className="lg:col-span-7">
+          <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-sm font-bold mb-8 uppercase tracking-[0.2em] backdrop-blur-sm shadow-[0_4px_12px_rgba(0,0,0,0.1)] transition-transform duration-500 group-hover:translate-x-2">
+            <span className="w-2 h-2 rounded-full bg-[#4BB8FA] animate-pulse" />
+            Layanan Kustom
+          </div>
+          <h3 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white tracking-tighter leading-[1.05] uppercase text-balance group-hover:scale-[1.02] transition-transform duration-500 origin-left" style={{ fontFamily: "var(--font-batica)" }}>
+            TUGAS <span className="text-[#4BB8FA] drop-shadow-[0_0_15px_rgba(75,184,250,0.5)]">SPESIFIK</span><br />
+            BUTUH SOLUSI<br />
+            <span className="text-[#E4E4E7] group-hover:text-white transition-colors duration-500">SPESIFIK.</span>
+          </h3>
+        </div>
+        
+        {/* Right Column: Content & CTA */}
+        <div className="lg:col-span-5 flex flex-col items-start lg:pl-12 lg:border-l border-white/20 pt-4 lg:pt-0">
+          <div className="w-14 h-14 bg-white/10 border border-white/20 rounded-2xl flex items-center justify-center mb-8 backdrop-blur-sm group-hover:-translate-y-2 group-hover:shadow-[0_10px_20px_rgba(0,0,0,0.2)] transition-all duration-500">
+            <BiBriefcase className="text-2xl text-[#4BB8FA] group-hover:scale-110 group-hover:rotate-12 transition-transform duration-500" />
+          </div>
+          <p className="text-lg md:text-xl text-white/80 font-medium leading-relaxed mb-10 max-w-md group-hover:text-white transition-colors duration-500">
+            Tidak menemukan layanan yang pas di katalog kami? Konsultasikan format, deadline, dan ekspektasi Anda secara langsung. Tim spesialis kami siap beradaptasi.
+          </p>
+          
+          <a 
+            href="https://wa.me/6281112345678?text=Halo%20Admin%20SelesainAja,%20saya%20ingin%20konsultasi%20mengenai%20layanan%20kustom"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group/btn relative overflow-hidden inline-flex items-center justify-between w-full sm:w-auto gap-8 bg-white text-[#0b3e84] py-4 px-6 md:py-5 md:px-8 rounded-full font-black text-lg transition-all duration-300 hover:scale-[1.05] shadow-[0_0_40px_rgba(255,255,255,0.2)] hover:shadow-[0_0_60px_rgba(255,255,255,0.4)]"
+          >
+            {/* Hover Fill Effect */}
+            <div className="absolute inset-0 w-0 bg-[#4BB8FA] transition-all duration-500 ease-out group-hover/btn:w-full" />
+            
+            <span className="uppercase tracking-widest text-sm md:text-base relative z-10 group-hover/btn:text-white transition-colors duration-300">Mulai Diskusi</span>
+            <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#0b3e84]/10 group-hover/btn:bg-white/20 flex items-center justify-center transition-colors relative z-10">
+              <BiChat className="text-lg md:text-xl group-hover/btn:text-white transition-colors duration-300" />
+            </div>
+          </a>
+        </div>
+        
+      </div>
+    </div>
+  );
+};
