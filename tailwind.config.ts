@@ -54,6 +54,13 @@ const config: Config = {
           DEFAULT: "#FFFFFF",
           foreground: "#0A0A0B",
         },
+        gentelella: {
+          sidebar: "#2A3F54",
+          nav: "#172D44",
+          active: "#1ABB9C",
+          bg: "#F7F7F7",
+          text: "#73879C",
+        },
       },
       borderRadius: {
         lg: "0.75rem",

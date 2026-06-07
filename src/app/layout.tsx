@@ -1,9 +1,11 @@
 import type { Metadata, Viewport } from "next"
 import { Roboto, Plus_Jakarta_Sans } from "next/font/google"
 import "./globals.css"
+import "animate.css"
 import { Toaster } from "@/components/ui/sonner"
 import { TooltipProvider } from "@/components/ui/tooltip"
 import { FloatingWhatsApp } from "@/components/shared/FloatingWhatsApp"
+import NextTopLoader from "nextjs-toploader"
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -183,6 +185,17 @@ export default function RootLayout({
   return (
     <html lang="id" className={`scroll-smooth ${roboto.variable} ${jakarta.variable}`} suppressHydrationWarning>
       <body className="font-sans antialiased bg-[#FAFAFA] text-[#0A0A0B] min-h-screen flex flex-col" suppressHydrationWarning>
+        <NextTopLoader 
+          color="#0066FF"
+          initialPosition={0.08}
+          crawlSpeed={200}
+          height={3}
+          crawl={true}
+          showSpinner={false}
+          easing="ease"
+          speed={200}
+          shadow="0 0 10px #0066FF,0 0 5px #0066FF"
+        />
         <TooltipProvider>
           {children}
         </TooltipProvider>

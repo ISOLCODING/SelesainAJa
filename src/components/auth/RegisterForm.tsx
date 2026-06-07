@@ -2,14 +2,20 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
+import { useRouter } from "next/navigation"
+import { signIn } from "next-auth/react"
 import { motion } from "framer-motion"
 import { RiEyeLine, RiEyeOffLine, RiGoogleFill, RiLockPasswordLine, RiMailLine, RiUser3Line } from "react-icons/ri"
-import { BiLoaderAlt } from "react-icons/bi"
+import { BiLoaderAlt, BiErrorCircle } from "react-icons/bi"
+import { registerUser } from "@/app/actions/register"
 
 export function RegisterForm() {
+  const router = useRouter()
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
   
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
@@ -34,18 +40,44 @@ export function RegisterForm() {
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault()
+    setError(null)
+    
     if (password !== confirmPassword) {
-      alert("Password tidak cocok!")
+      setError("Password tidak cocok!")
       return
     }
     
     setIsLoading(true)
-    // Simulate API call
-    setTimeout(() => {
+    
+    try {
+      const formData = new FormData()
+      formData.append("name", name)
+      formData.append("email", email)
+      formData.append("password", password)
+
+      const result = await registerUser(formData)
+
+      if (!result.success) {
+        setError(result.error as string)
+      } else {
+        // Login setelah register sukses
+        const res = await signIn("credentials", {
+          redirect: false,
+          email,
+          password,
+        })
+        
+        if (res?.error) {
+          setError(res.error)
+        } else {
+          router.push("/writer/dashboard") // Redirect writer dashboard
+        }
+      }
+    } catch (err) {
+      setError("Terjadi kesalahan pada sistem")
+    } finally {
       setIsLoading(false)
-      // temporary mock success
-      window.location.href = "/dashboard"
-    }, 1500)
+    }
   }
 
   return (
@@ -57,9 +89,14 @@ export function RegisterForm() {
       >
         <div className="text-center mb-10">
           <Link href="/" className="inline-block mb-6">
-            <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center text-white font-black font-jakarta text-2xl shadow-lg">
-              S
-            </div>
+            <Image 
+              src="/images/Logo.png" 
+              alt="SelesainAja Logo" 
+              width={200} 
+              height={100} 
+              priority
+              className="h-12 w-auto object-contain mx-auto"
+            />
           </Link>
           <h1 className="text-3xl md:text-4xl font-black font-jakarta text-slate-900 tracking-tight mb-3">
             Daftar Akun Baru
@@ -72,6 +109,12 @@ export function RegisterForm() {
         <div className="bg-white p-8 md:p-10 rounded-[2rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] border border-slate-100">
           <form onSubmit={handleRegister} className="space-y-5">
             
+            {error && (
+              <div className="bg-red-50 text-red-600 px-4 py-3 rounded-xl flex items-center text-sm font-medium border border-red-100">
+                <BiErrorCircle className="text-xl mr-2" />
+                {error}
+              </div>
+            )}
             {/* Name Field */}
             <div className="space-y-2">
               <label className="text-sm font-bold text-slate-700 ml-1">Nama Lengkap</label>

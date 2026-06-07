@@ -69,7 +69,11 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
     );
   }
 
-  const serviceSchema = getServiceSchema(slug);
+  const serviceSchema = getServiceSchema({
+    slug,
+    name: service.title,
+    description: `Layanan profesional untuk ${service.title}`
+  });
   const breadcrumbSchema = getBreadcrumbSchema([
     { name: "Layanan", url: "https://selesainaja.com/services" },
     { name: service.title, url: `https://selesainaja.com/services/${slug}` }

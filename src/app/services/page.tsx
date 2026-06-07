@@ -1,10 +1,7 @@
 import { Metadata } from "next"
-import { Header } from "@/components/layout/Header"
-import { Footer } from "@/components/layout/Footer"
-import { PageHeader } from "@/components/layout/PageHeader"
-import { ServicesSection } from "@/components/home/sections/ServicesSection"
 import JsonLd from "@/components/seo/JsonLd"
 import { getBreadcrumbSchema } from "@/lib/seo/structured-data"
+import { ServicesClient } from "@/components/services/ServicesClient"
 
 export const metadata: Metadata = {
   title: "Layanan Jasa Pengerjaan Tugas — Makalah, Paper, Presentasi",
@@ -37,15 +34,7 @@ export default function ServicesPage() {
   return (
     <>
       <JsonLd data={breadcrumbSchema} />
-      <Header />
-      <main className="min-h-screen bg-white">
-        <PageHeader
-          title="Layanan Terbaik Kami"
-          description="Pilih layanan yang sesuai dengan kebutuhan tugas Anda. Dikerjakan oleh tim profesional, dijamin tepat waktu, dan 100% bebas plagiasi."
-        />
-        <ServicesSection />
-      </main>
-      <Footer />
+      <ServicesClient />
     </>
   )
 }

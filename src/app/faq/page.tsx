@@ -3,6 +3,7 @@ import { Header } from "@/components/layout/Header"
 import { Footer } from "@/components/layout/Footer"
 import { PageHeader } from "@/components/layout/PageHeader"
 import { FAQSection } from "@/components/home/sections/FAQSection"
+import { faqs } from "@/lib/data/faqs"
 import JsonLd from "@/components/seo/JsonLd"
 import { getFAQSchema, getBreadcrumbSchema } from "@/lib/seo/structured-data"
 
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
 }
 
 export default function FAQPage() {
-  const faqSchema = getFAQSchema();
+  const faqSchema = getFAQSchema(faqs);
   const breadcrumbSchema = getBreadcrumbSchema([
     { name: "FAQ", url: "https://selesainaja.com/faq" }
   ]);
@@ -40,6 +41,12 @@ export default function FAQPage() {
         <PageHeader 
           title="Pertanyaan Sering Diajukan" 
           description="Punya pertanyaan seputar layanan kami? Temukan jawabannya di sini atau hubungi tim customer service kami."
+          background="image"
+          backgroundImage="https://images.unsplash.com/photo-1552581234-26160f608093?q=80&w=2000&auto=format&fit=crop"
+          breadcrumbs={[
+            { label: "Beranda", href: "/" },
+            { label: "FAQ" }
+          ]}
         />
         <FAQSection />
       </main>

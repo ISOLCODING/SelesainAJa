@@ -1,4 +1,4 @@
-import { BiBookOpen, BiFile, BiLayout, BiPen, BiCodeAlt, BiLineChart } from "react-icons/bi";
+import { BiBookOpen, BiFile, BiLayout, BiPen, BiNews, BiArchive, BiBookBookmark } from "react-icons/bi";
 import { ServiceType, TestimonialType, FAQType, StatType, StepType } from "../types/home";
 
 export const services: ServiceType[] = [
@@ -68,71 +68,72 @@ export const services: ServiceType[] = [
     ],
     deliveryTime: "1 - 2 Hari Kerja"
   },
+
   {
-    title: "Translate & Parafrase",
-    description: "Terjemahan jurnal Inggris-Indonesia dan parafrase anti-plagiasi (Turnitin).",
-    icon: BiPen,
-    price: "Mulai Rp 35.000",
-    href: "/services/translate",
-    color: "from-emerald-400 to-teal-500",
-    fullDescription: "Layanan eksklusif untuk menerjemahkan literatur asing dengan struktur bahasa yang natural serta memparafrase teks agar lolos uji Turnitin. Kami tidak menggunakan terjemahan mesin secara mentah, melainkan disesuaikan dengan konteks akademis.",
-    features: [
-      "Penerjemahan konteks akademis (Bukan sekadar Google Translate)",
-      "Re-strukturisasi kalimat agar lebih mengalir",
-      "Proofreading grammar & tata bahasa",
-      "Parafrase tingkat tinggi untuk menekan similarity index",
-      "Penyediaan laporan Turnitin sebelum dan sesudah"
-    ],
-    benefits: [
-      "Kalimat mudah dipahami dan sesuai kaidah PUEBI",
-      "Hemat waktu dalam membaca literatur asing",
-      "Aman dari tuduhan plagiarisme di kampus"
-    ],
-    deliveryTime: "1 - 3 Hari Kerja"
-  },
-  {
-    title: "Tugas Pemrograman",
-    description: "Pengerjaan tugas koding, pembuatan website, atau aplikasi tugas akhir.",
-    icon: BiCodeAlt,
+    title: "Pembuatan Jurnal Ilmiah",
+    description: "Penulisan jurnal terstandarisasi siap publikasi untuk SINTA atau Scopus.",
+    icon: BiNews,
     price: "Mulai Rp 150.000",
-    href: "/services/programming",
+    href: "/services/jurnal",
     color: "from-blue-600 to-indigo-600",
-    fullDescription: "Butuh bantuan memecahkan bug atau membuat aplikasi dari nol? Tim developer kami siap membantu pengerjaan tugas koding Anda. Kami menangani berbagai bahasa pemrograman mulai dari Web Development (React, Next.js, PHP), Mobile (Flutter), hingga Python.",
+    fullDescription: "Kesulitan mengubah hasil penelitian menjadi format artikel jurnal? Kami siap menyusun karya tulis ilmiah Anda sesuai dengan template jurnal tujuan (SINTA, Scopus, DOAJ, dll). Layanan kami menjamin standar penulisan tingkat tinggi, bebas plagiasi, dan sesuai dengan kaidah publikasi akademis internasional.",
     features: [
-      "Kode bersih (Clean Code) dan terstruktur",
-      "Dokumentasi kode (comments) yang mudah dipahami",
-      "Dukungan berbagai stack teknologi populer",
-      "Instalasi dan setup di perangkat Anda",
-      "Sesi penjelasan alur program (opsional)"
+      "Penyesuaian template jurnal (SINTA/Scopus)",
+      "Penyusunan abstrak bilingual (ID-EN)",
+      "Manajemen referensi Mendeley/Zotero",
+      "Penyusunan metodologi dan hasil secara komprehensif",
+      "Uji Turnitin gratis (Similarity < 15%)"
     ],
     benefits: [
-      "Program dijamin berjalan tanpa error (Bug-free)",
-      "Bisa dijadikan referensi belajar koding yang baik",
-      "Hemat berhari-hari waktu debugging"
+      "Peluang diterima (Accepted) lebih tinggi",
+      "Hemat waktu berbulan-bulan untuk drafting",
+      "Terbebas dari kendala teknis format sitasi"
     ],
     deliveryTime: "3 - 7 Hari Kerja"
   },
   {
-    title: "Olah Data Statistik",
-    description: "Pengolahan data SPSS, Excel, R, atau Python untuk bab 4 Skripsi/Tesis.",
-    icon: BiLineChart,
+    title: "Proposal Skripsi / Penelitian",
+    description: "Penyusunan proposal komprehensif Bab 1-3 lengkap dengan metodologi.",
+    icon: BiArchive,
     price: "Mulai Rp 200.000",
-    href: "/services/olah-data",
+    href: "/services/proposal",
     color: "from-orange-500 to-amber-500",
-    fullDescription: "Pusing dengan angka dan hasil uji statistik yang tidak signifikan? Kami membantu pengolahan data Anda dari tahap tabulasi hingga interpretasi hasil untuk Bab 4. Kami memastikan setiap tahapan uji statistik dilakukan dengan metode yang tepat dan valid.",
+    fullDescription: "Proposal adalah langkah awal yang paling krusial. Kami membantu Anda menyusun Proposal Skripsi, Tesis, atau Penelitian (Bab 1, 2, dan 3) yang solid. Kami memastikan rumusan masalah tajam, kerangka teori relevan, dan metodologi yang tepat sehingga meminimalisir kemungkinan ditolak oleh Dosen Pembimbing.",
     features: [
-      "Uji Validitas, Reliabilitas, dan Asumsi Klasik",
-      "Analisis Regresi, ANOVA, SEM, PLS",
-      "Output software lengkap (SPSS, EViews, SmartPLS, dll)",
-      "Interpretasi dan narasi hasil secara komprehensif",
-      "Konsultasi perbaikan jika data tidak normal"
+      "Bab 1: Latar Belakang & Rumusan Masalah yang tajam",
+      "Bab 2: Tinjauan Pustaka terbaru (5-10 tahun terakhir)",
+      "Bab 3: Metodologi Penelitian yang aplikatif",
+      "Termasuk draft kuesioner atau instrumen wawancara",
+      "Sesi konsultasi untuk persiapan seminar proposal"
     ],
     benefits: [
-      "Hasil penelitian dapat dipertanggungjawabkan",
-      "Tidak perlu pusing mempelajari software statistik",
-      "Siap digunakan langsung untuk sidang skripsi/tesis"
+      "Proposal lebih cepat di-ACC Dosen Pembimbing",
+      "Alur pemikiran penelitian yang logis dan kuat",
+      "Bebas pusing memikirkan grand theory"
     ],
-    deliveryTime: "2 - 5 Hari Kerja"
+    deliveryTime: "3 - 5 Hari Kerja"
+  },
+  {
+    title: "Pengerjaan Skripsi Full",
+    description: "Solusi lengkap pengerjaan Skripsi/Tesis dari Bab 1 hingga Bab 5.",
+    icon: BiBookBookmark,
+    price: "Mulai Rp 500.000",
+    href: "/services/skripsi",
+    color: "from-emerald-500 to-green-600",
+    fullDescription: "Layanan premium kami untuk membantu mahasiswa tingkat akhir yang kesulitan menyelesaikan Skripsi atau Tesis. Layanan ini mencakup pengerjaan lengkap dari Bab 1 (Pendahuluan) hingga Bab 5 (Kesimpulan), termasuk pengolahan data. Anda akan didampingi hingga lulus dan revisi akan diakomodir penuh sesuai arahan Dosen Pembimbing.",
+    features: [
+      "Pengerjaan lengkap Bab 1 sampai Bab 5",
+      "Pengolahan data (SPSS, EViews, PLS) dan interpretasi",
+      "Bimbingan dan penjelasan via Zoom/Chat (opsional)",
+      "Daftar Pustaka, Lampiran, dan Abstrak",
+      "Garansi revisi sampai lulus sidang"
+    ],
+    benefits: [
+      "Anda bisa fokus belajar materi untuk sidang",
+      "Terbebas dari rasa stres dan ancaman DO",
+      "Lulus tepat waktu dengan nilai memuaskan"
+    ],
+    deliveryTime: "7 - 14 Hari Kerja"
   }
 ];
 

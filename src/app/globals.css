@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @plugin "tailwindcss-animate";
+@plugin "@tailwindcss/typography";
 @custom-variant dark (&:is(.dark *));
 
 
@@ -44,6 +45,12 @@
 
   ::selection {
     @apply bg-[#1591DC] text-white;
+  }
+
+  /* Remove default Edge/IE password reveal icon since we use custom ones */
+  input::-ms-reveal,
+  input::-ms-clear {
+    display: none;
   }
 }
 

@@ -16,15 +16,16 @@ import {
   BiBriefcase,
   BiChat
 } from "react-icons/bi"
+import * as BiIcons from "react-icons/bi"
 import Link from "next/link"
-import { services } from "@/lib/constants"
+import { services as fallbackServices } from "@/lib/constants"
 import { motion, AnimatePresence } from "framer-motion"
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger, useGSAP);
 }
 
-export function ServicesSection() {
+export function ServicesSection({ initialServices }: { initialServices?: any[] }) {
   const containerRef = useRef<HTMLDivElement>(null)
   const headingRef = useRef<HTMLDivElement>(null)
   const cardsRef = useRef<(HTMLDivElement | null)[]>([])
@@ -173,8 +174,13 @@ export function ServicesSection() {
 
         {/* 3-Column Service Cards — Clean International Design */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {services.map((service, index) => (
-            <Link key={index} href={service.href} className="block h-full outline-none group">
+          {(initialServices && initialServices.length > 0 ? initialServices : fallbackServices).map((service, index) => {
+            const IconComponent = typeof service.icon === 'string' 
+              ? (BiIcons[service.icon as keyof typeof BiIcons] || BiIcons.BiBriefcase)
+              : (service.icon || BiIcons.BiBriefcase);
+
+            return (
+            <Link key={index} href={service.href || `/services/${service.slug}`} className="block h-full outline-none group">
               <div className="h-full bg-white rounded-2xl border border-[#E4E4E7] hover:border-[#1591DC]/40 hover:shadow-lg hover:shadow-[#1591DC]/8 transition-all duration-200 flex flex-col overflow-hidden">
 
                 {/* Top Section */}
@@ -182,26 +188,26 @@ export function ServicesSection() {
                   {/* Icon + Badge Row */}
                   <div className="flex items-start justify-between mb-4">
                     <div className="w-11 h-11 rounded-xl bg-[#F4F4F5] group-hover:bg-[#1591DC]/10 transition-colors duration-200 flex items-center justify-center">
-                      <service.icon className="w-5 h-5 text-[#52525B] group-hover:text-[#1591DC] transition-colors duration-200" />
+                      <IconComponent className="w-5 h-5 text-[#52525B] group-hover:text-[#1591DC] transition-colors duration-200" />
                     </div>
                     <span className="text-[11px] font-bold text-[#71717A] bg-[#F4F4F5] px-2.5 py-1 rounded-full">
-                      {service.deliveryTime}
+                      {service.deliveryTime || "1-3 Hari"}
                     </span>
                   </div>
                   {/* Title */}
                   <h3 className="text-[17px] font-bold text-[#09090B] leading-snug mb-2 group-hover:text-[#1591DC] transition-colors duration-200">
-                    {service.title}
+                    {service.name || service.title}
                   </h3>
                   {/* Description */}
                   <p className="text-sm text-[#71717A] leading-relaxed font-normal">
-                    {service.description}
+                    {service.shortDescription || service.description}
                   </p>
                 </div>
 
                 {/* Features */}
                 <div className="flex-1 px-6 py-5">
                   <ul className="space-y-2">
-                    {service.features?.slice(0, 4).map((feat, i) => (
+                    {service.features?.slice(0, 4).map((feat: string, i: number) => (
                       <li key={i} className="flex items-start gap-2.5">
                         <svg className="w-4 h-4 text-[#1591DC] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                           <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
@@ -217,7 +223,7 @@ export function ServicesSection() {
                   <div>
                     <p className="text-[10px] font-semibold text-[#A1A1AA] uppercase tracking-widest mb-0.5">Mulai dari</p>
                     <p className="text-base font-bold text-[#09090B]">
-                      {service.price.replace("Mulai ", "")}
+                      {service.priceDisplay ? service.priceDisplay.replace("Mulai ", "") : (service.price ? service.price.replace("Mulai ", "") : "")}
                     </p>
                   </div>
                   <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#1591DC] group-hover:text-white group-hover:bg-[#1591DC] border border-[#1591DC]/30 group-hover:border-transparent px-3.5 py-1.5 rounded-lg transition-all duration-200">
@@ -228,7 +234,8 @@ export function ServicesSection() {
 
               </div>
             </Link>
-          ))}
+            );
+          })}
         </div>
 
         {/* Global CTA Section within Services - Interactive Layout */}

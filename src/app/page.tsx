@@ -11,9 +11,10 @@ import { CTASection } from "@/components/home/sections/CTASection";
 import { WaveDivider } from "@/components/shared/WaveDivider";
 import JsonLd from "@/components/seo/JsonLd";
 import { getOrganizationSchema, getWebsiteSchema } from "@/lib/seo/structured-data";
+import { prisma } from "@/lib/prisma";
 
 export const metadata: Metadata = {
-  title: "SelesainAja — Jasa Pengerjaan Tugas Profesional ⭐ Mulai 50K",
+  title: "SelesainAja — Jasa Pengerjaan Tugas Profesional  Mulai 50K",
   description:
     "Butuh bantuan tugas? ✓ SelesainAja platform jasa pengerjaan tugas #1. Makalah, paper, presentasi dikerjakan tim profesional. Bebas plagiat, cepat, revisi gratis! Mulai Rp50.000.",
   keywords: [
@@ -30,16 +31,22 @@ export const metadata: Metadata = {
   openGraph: {
     title: "SelesainAja — Jasa Pengerjaan Tugas Profesional & Terpercaya",
     description:
-      "Butuh bantuan tugas? ✓ SelesainAja platform jasa pengerjaan tugas #1. Mulai Rp50.000. Bebas plagiat, revisi gratis!",
+      "Butuh bantuan tugas? SelesainAja platform jasa pengerjaan tugas #1. Mulai Rp50.000. Bebas plagiat, revisi gratis!",
     url: "https://selesainaja.com",
     images: [{ url: "/og/home.jpg", width: 1200, height: 630, alt: "SelesainAja - Jasa Pengerjaan Tugas" }],
   },
 };
 
-
-export default function Home() {
+export default async function Home() {
   const orgSchema = getOrganizationSchema();
   const websiteSchema = getWebsiteSchema();
+
+  // Fetch dynamic content from Prisma
+  const [dbServices, dbTestimonials, dbFaqs] = await Promise.all([
+    prisma.service.findMany({ where: { isActive: true }, orderBy: { sortOrder: "asc" } }),
+    prisma.testimonial.findMany({ where: { status: "published" }, orderBy: { sortOrder: "asc" } }),
+    prisma.faq.findMany({ where: { isActive: true }, orderBy: { sortOrder: "asc" } })
+  ]);
 
   return (
     <>
@@ -60,7 +67,7 @@ export default function Home() {
         <WaveDivider topColor="#F8FAFC" bottomColor="#FAFAFA" />
 
         {/* Services: #FAFAFA */}
-        <ServicesSection />
+        <ServicesSection initialServices={dbServices} />
 
         {/* Wave: #FAFAFA → #ffffff */}
         <WaveDivider topColor="#FAFAFA" bottomColor="#ffffff" />
@@ -72,13 +79,13 @@ export default function Home() {
         <WaveDivider topColor="#ffffff" bottomColor="#FAFAFA" />
 
         {/* Testimonials: #FAFAFA */}
-        <TestimonialsSection />
+        <TestimonialsSection initialTestimonials={dbTestimonials} />
 
         {/* Wave: #FAFAFA → #ffffff */}
         <WaveDivider topColor="#FAFAFA" bottomColor="#ffffff" />
 
         {/* FAQ: #ffffff */}
-        <FAQSection />
+        <FAQSection initialFaqs={dbFaqs} />
 
         {/* Wave: #ffffff → #2C5EAD */}
         <WaveDivider topColor="#ffffff" bottomColor="#2C5EAD" />

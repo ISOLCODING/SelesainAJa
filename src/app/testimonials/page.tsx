@@ -17,6 +17,12 @@ export default function TestimonialsPage() {
         <PageHeader 
           title="Kisah Sukses Klien Kami" 
           description="Ratusan mahasiswa telah mempercayakan tugas akademik mereka kepada SelesainAja. Berikut adalah cerita mereka."
+          background="image"
+          backgroundImage="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2000&auto=format&fit=crop"
+          breadcrumbs={[
+            { label: "Beranda", href: "/" },
+            { label: "Testimoni" }
+          ]}
         />
         <TestimonialsSection />
       </main>

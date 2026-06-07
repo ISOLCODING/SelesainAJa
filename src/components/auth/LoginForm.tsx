@@ -2,25 +2,43 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
+import { useRouter } from "next/navigation"
+import { signIn } from "next-auth/react"
 import { motion } from "framer-motion"
 import { RiEyeLine, RiEyeOffLine, RiGoogleFill, RiLockPasswordLine, RiMailLine } from "react-icons/ri"
-import { BiLoaderAlt } from "react-icons/bi"
+import { BiLoaderAlt, BiErrorCircle } from "react-icons/bi"
+import { loginAction } from "@/app/actions/auth"
 
 export function LoginForm() {
+  const router = useRouter()
   const [showPassword, setShowPassword] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+  const [error, setError] = useState<string | null>(null)
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsLoading(true)
-    // Simulate API call
-    setTimeout(() => {
-      setIsLoading(false)
-      // temporary mock success
-      window.location.href = "/dashboard"
-    }, 1500)
+    setError(null)
+    
+    try {
+      const formData = new FormData(e.currentTarget);
+      // Let the server action know to redirect to the smart router
+      formData.append("redirectTo", `/dashboard`);
+      
+      const result = await loginAction(formData);
+      
+      // If we get here and there's an error string returned
+      if (result?.error) {
+        setError(result.error);
+        setIsLoading(false);
+      }
+    } catch (err) {
+      // Typically redirect throws an error that we shouldn't catch,
+      // but if we do, Next.js handles NEXT_REDIRECT internally.
+      setError("Terjadi kesalahan sistem");
+      setIsLoading(false);
+    }
   }
 
   return (
@@ -32,9 +50,14 @@ export function LoginForm() {
       >
         <div className="text-center mb-10">
           <Link href="/" className="inline-block mb-6">
-            <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center text-white font-black font-jakarta text-2xl shadow-lg">
-              S
-            </div>
+            <Image 
+              src="/images/Logo.png" 
+              alt="SelesainAja Logo" 
+              width={200} 
+              height={100} 
+              priority
+              className="h-12 w-auto object-contain mx-auto"
+            />
           </Link>
           <h1 className="text-3xl md:text-4xl font-black font-jakarta text-slate-900 tracking-tight mb-3">
             Selamat Datang
@@ -47,6 +70,13 @@ export function LoginForm() {
         <div className="bg-white p-8 md:p-10 rounded-[2rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] border border-slate-100">
           <form onSubmit={handleLogin} className="space-y-6">
             
+            {error && (
+              <div className="bg-red-50 text-red-600 px-4 py-3 rounded-xl flex items-center text-sm font-medium border border-red-100">
+                <BiErrorCircle className="text-xl mr-2" />
+                {error}
+              </div>
+            )}
+            
             {/* Email Field */}
             <div className="space-y-2">
               <label className="text-sm font-bold text-slate-700 ml-1">Email</label>
@@ -56,8 +86,7 @@ export function LoginForm() {
                 </div>
                 <input
                   type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  name="email"
                   placeholder="nama@email.com"
                   required
                   className="w-full pl-11 pr-4 py-3.5 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-300 outline-none text-slate-700 font-medium"
@@ -79,8 +108,7 @@ export function LoginForm() {
                 </div>
                 <input
                   type={showPassword ? "text" : "password"}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  name="password"
                   placeholder="••••••••"
                   required
                   className="w-full pl-11 pr-12 py-3.5 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-300 outline-none text-slate-700 font-medium"
