@@ -9,7 +9,7 @@ const hasRedisConfig = !!process.env.UPSTASH_REDIS_REST_URL && !!process.env.UPS
 export const rateLimiter = hasRedisConfig
   ? new Ratelimit({
       redis: Redis.fromEnv(),
-      limiter: Ratelimit.slidingWindow(10, "10 s"),
+      limiter: Ratelimit.slidingWindow(150, "10 s"),
       analytics: true,
       ephemeralCache: new Map(),
     })

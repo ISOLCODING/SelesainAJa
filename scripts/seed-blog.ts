@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client';
-import { blogPosts } from './src/lib/data/blog';
+import { blogPosts } from '../src/lib/data/blog';
 
 const prisma = new PrismaClient();
 
