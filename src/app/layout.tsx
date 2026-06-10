@@ -185,7 +185,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="id" className={`${roboto.variable} ${jakarta.variable}`} suppressHydrationWarning>
+    <html lang="id" className={`scroll-smooth ${roboto.variable} ${jakarta.variable}`} suppressHydrationWarning>
       <body className="font-sans antialiased bg-[#FAFAFA] text-[#0A0A0B] min-h-screen flex flex-col" suppressHydrationWarning>
         <NextTopLoader 
           color="#0066FF"
