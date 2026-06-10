@@ -26,8 +26,8 @@ export const contactInfo: ContactInfo[] = [
   {
     icon: Mail,
     title: "Email",
-    value: "halo@selesainaja.com",
-    href: "mailto:halo@selesainaja.com",
+    value: "halo@selesainaja.vercel.app",
+    href: "mailto:halo@selesainaja.vercel.app",
     action: "Kirim Email",
   },
   {

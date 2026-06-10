@@ -38,7 +38,7 @@ export default function CareersPage() {
               Kirimkan CV terbaru, transkrip nilai, dan minimal 2 (dua) portofolio tulisan (makalah/paper/artikel yang pernah Anda buat secara mandiri) ke email kami:
             </p>
             <div className="bg-slate-50 p-6 rounded-xl border border-slate-100 inline-block">
-              <p className="font-semibold text-slate-900 mb-1">Email: <a href="mailto:recruitment@selesainaja.com" className="text-[#0066FF] hover:underline">recruitment@selesainaja.com</a></p>
+              <p className="font-semibold text-slate-900 mb-1">Email: <a href="mailto:recruitment@selesainaja.vercel.app" className="text-[#0066FF] hover:underline">recruitment@selesainaja.vercel.app</a></p>
               <p className="text-slate-600 text-sm">Subjek: Nama Lengkap - Jurusan - Posisi (Contoh: Budi Santoso - Ilmu Hukum - Freelance Writer)</p>
             </div>
           </div>

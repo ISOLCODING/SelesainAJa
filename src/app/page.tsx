@@ -27,12 +27,12 @@ export const metadata: Metadata = {
     "jasa pengerjaan tugas murah",
     "jasa pengerjaan tugas online",
   ],
-  alternates: { canonical: "https://selesainaja.com" },
+  alternates: { canonical: "https://selesainaja.vercel.app" },
   openGraph: {
     title: "SelesainAja — Jasa Pengerjaan Tugas Profesional & Terpercaya",
     description:
       "Butuh bantuan tugas? SelesainAja platform jasa pengerjaan tugas #1. Mulai Rp50.000. Bebas plagiat, revisi gratis!",
-    url: "https://selesainaja.com",
+    url: "https://selesainaja.vercel.app",
     images: [{ url: "/og/home.jpg", width: 1200, height: 630, alt: "SelesainAja - Jasa Pengerjaan Tugas" }],
   },
 };

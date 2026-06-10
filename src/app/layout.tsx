@@ -6,6 +6,8 @@ import { Toaster } from "@/components/ui/sonner"
 import { TooltipProvider } from "@/components/ui/tooltip"
 import { FloatingWhatsApp } from "@/components/shared/FloatingWhatsApp"
 import NextTopLoader from "nextjs-toploader"
+import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider"
+import GoogleAnalytics from "@/components/seo/GoogleAnalytics"
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -18,7 +20,7 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://selesainaja.com"),
+  metadataBase: new URL("https://selesainaja.vercel.app"),
 
   title: {
     default: "SelesainAja — Jasa Pengerjaan Tugas Profesional & Terpercaya",
@@ -46,7 +48,7 @@ export const metadata: Metadata = {
     "jasa laporan praktikum",
   ],
 
-  authors: [{ name: "Tim SelesainAja", url: "https://selesainaja.com/about" }],
+  authors: [{ name: "Tim SelesainAja", url: "https://selesainaja.vercel.app/about" }],
   creator: "SelesainAja",
   publisher: "SelesainAja",
 
@@ -66,7 +68,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "id_ID",
-    url: "https://selesainaja.com",
+    url: "https://selesainaja.vercel.app",
     siteName: "SelesainAja",
     title: "SelesainAja — Jasa Pengerjaan Tugas Profesional & Terpercaya",
     description:
@@ -88,7 +90,7 @@ export const metadata: Metadata = {
       },
     ],
     countryName: "Indonesia",
-    emails: ["support@selesainaja.com"],
+    emails: ["support@selesainaja.vercel.app"],
     phoneNumbers: ["+6281112345678"],
   },
 
@@ -110,7 +112,7 @@ export const metadata: Metadata = {
   },
 
   verification: {
-    google: "GOOGLE_VERIFICATION_CODE",
+    google: "e408fba496e16d62",
     yandex: "YANDEX_VERIFICATION_CODE",
     yahoo: "YAHOO_VERIFICATION_CODE",
     other: {
@@ -120,9 +122,9 @@ export const metadata: Metadata = {
   },
 
   alternates: {
-    canonical: "https://selesainaja.com",
+    canonical: "https://selesainaja.vercel.app",
     languages: {
-      "id-ID": "https://selesainaja.com",
+      "id-ID": "https://selesainaja.vercel.app",
     },
   },
 
@@ -154,12 +156,12 @@ export const metadata: Metadata = {
   },
 
   other: {
-    "google-site-verification": "GOOGLE_CODE",
+    "google-site-verification": "e408fba496e16d62",
     "msvalidate.01": "BING_CODE",
     "p:domain_verify": "PINTEREST_CODE",
     "fb:app_id": "FACEBOOK_APP_ID",
     "fb:pages": "FACEBOOK_PAGE_ID",
-    "ia:markup_url": "https://selesainaja.com/ia",
+    "ia:markup_url": "https://selesainaja.vercel.app/ia",
   },
 }
 
@@ -196,12 +198,15 @@ export default function RootLayout({
           speed={200}
           shadow="0 0 10px #0066FF,0 0 5px #0066FF"
         />
-        <TooltipProvider>
-          {children}
-        </TooltipProvider>
+        <SmoothScrollProvider>
+          <TooltipProvider>
+            {children}
+          </TooltipProvider>
+        </SmoothScrollProvider>
         <FloatingWhatsApp />
         <Toaster />
       </body>
+      <GoogleAnalytics />
     </html>
   )
 }

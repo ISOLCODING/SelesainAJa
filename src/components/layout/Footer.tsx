@@ -128,7 +128,7 @@ export function Footer() {
               
               <div className="space-y-4">
                 {[
-                  { icon: Mail, text: "support@selesainaja.com" },
+                  { icon: Mail, text: "support@selesainaja.vercel.app" },
                   { icon: Phone, text: "0812-XXXX-XXXX" },
                   { icon: MapPin, text: "Jakarta, Indonesia" },
                 ].map(({ icon: Icon, text }, i) => (

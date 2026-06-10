@@ -4,7 +4,6 @@ import { useRef } from "react"
 import { Header } from "@/components/layout/Header"
 import { Footer } from "@/components/layout/Footer"
 import { PageHeader } from "@/components/layout/PageHeader"
-import { services } from "@/lib/constants"
 import Image from "next/image"
 import Link from "next/link"
 import { 
@@ -32,7 +31,7 @@ const serviceImages = [
   "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1000&auto=format&fit=crop", // Skripsi
 ]
 
-export function ServicesClient() {
+export function ServicesClient({ initialServices = [] }: { initialServices?: any[] }) {
   const containerRef = useRef<HTMLDivElement>(null)
 
   useGSAP(() => {
@@ -116,7 +115,7 @@ export function ServicesClient() {
 
         {/* DEEP DIVE SERVICES ROWS */}
         <section className="py-24 space-y-24 md:space-y-32">
-          {services.map((service, index) => {
+          {initialServices.map((service, index) => {
             const isEven = index % 2 !== 0
             const imageSrc = serviceImages[index % serviceImages.length]
 
@@ -140,8 +139,7 @@ export function ServicesClient() {
                       
                       {/* Floating Badge */}
                       <div className="absolute top-6 left-6 bg-white/95 backdrop-blur-md px-4 py-2 rounded-2xl shadow-xl flex items-center gap-2">
-                        <service.icon className="text-[#0066FF] text-xl" />
-                        <span className="font-black text-[#0A0A0B] text-sm uppercase tracking-wider">{service.title}</span>
+                        <span className="font-black text-[#0A0A0B] text-sm uppercase tracking-wider">{service.name || service.title}</span>
                       </div>
                     </div>
                   </div>
@@ -149,17 +147,17 @@ export function ServicesClient() {
                   {/* Text Column */}
                   <div className="w-full lg:w-1/2 service-text">
                     <h2 className="text-4xl md:text-5xl font-black text-[#0A0A0B] mb-6 tracking-tight leading-tight">
-                      {service.title}
+                      {service.name || service.title}
                     </h2>
                     <p className="text-lg text-[#71717A] leading-relaxed mb-8">
-                      {service.fullDescription}
+                      {service.fullDescription || service.shortDescription}
                     </p>
 
                     {/* Features Grid */}
                     <div className="bg-white rounded-3xl p-8 shadow-sm border border-[#E4E4E7] mb-8">
                       <h4 className="text-lg font-bold text-[#0A0A0B] mb-4 border-b border-[#F4F4F5] pb-4">Yang Anda Dapatkan:</h4>
                       <ul className="space-y-3">
-                        {service.features?.map((feat, i) => (
+                        {service.features?.map((feat: string, i: number) => (
                           <li key={i} className="flex items-start gap-3">
                             <RiCheckDoubleLine className="text-[#0066FF] text-xl shrink-0 mt-0.5" />
                             <span className="text-[#3F3F46] font-medium leading-relaxed">{feat}</span>
@@ -170,7 +168,7 @@ export function ServicesClient() {
 
                     {/* Benefits Grid */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                      {service.benefits?.map((benefit, i) => (
+                      {service.benefits?.map((benefit: string, i: number) => (
                         <div key={i} className="bg-[#E6F0FF]/50 rounded-2xl p-4 flex gap-3 items-start">
                           <RiStarFill className="text-[#0066FF] shrink-0 mt-1" />
                           <span className="text-sm font-bold text-[#0A0A0B]">{benefit}</span>
@@ -183,16 +181,16 @@ export function ServicesClient() {
                       <div>
                         <p className="text-sm font-bold text-[#71717A] uppercase tracking-widest mb-1 flex items-center gap-2">
                           <RiTimeLine className="text-[#0066FF]" />
-                          Estimasi: {service.deliveryTime}
+                          Estimasi: {service.deliveryTime || "1-3 Hari"}
                         </p>
                         <p className="text-2xl font-black text-[#0A0A0B] flex items-center gap-2">
                           <RiMoneyDollarCircleLine className="text-[#10B981] text-3xl" />
-                          {service.price}
+                          {service.priceDisplay || service.price}
                         </p>
                       </div>
                       
                       <Link 
-                        href={service.href}
+                        href={`/services/${service.slug}`}
                         className="w-full sm:w-auto bg-[#0066FF] text-white px-8 py-4 rounded-full font-black hover:bg-[#0052CC] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-center"
                       >
                         Lihat Detail Layanan

@@ -45,7 +45,7 @@ export default function AdminSettingsPage() {
               </div>
               <div className="space-y-2">
                 <label className="text-sm font-medium text-slate-700">Email Kontak</label>
-                <Input type="email" defaultValue="halo@selesainaja.com" />
+                <Input type="email" defaultValue="halo@selesainaja.vercel.app" />
               </div>
               <div className="space-y-2">
                 <label className="text-sm font-medium text-slate-700">Nomor WhatsApp</label>

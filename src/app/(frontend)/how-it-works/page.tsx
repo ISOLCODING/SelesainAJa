@@ -13,18 +13,18 @@ export const metadata: Metadata = {
     "proses jasa tugas kuliah",
     "langkah pesan jasa akademik",
   ],
-  alternates: { canonical: "https://selesainaja.com/how-it-works" },
+  alternates: { canonical: "https://selesainaja.vercel.app/how-it-works" },
   openGraph: {
     title: "Cara Order Jasa Pengerjaan Tugas — Mudah & Cepat | SelesainAja",
     description:
       "4 langkah mudah: Konsultasi → Deal & bayar → Pengerjaan → Terima hasil. Proses transparan & cepat!",
-    url: "https://selesainaja.com/how-it-works",
+    url: "https://selesainaja.vercel.app/how-it-works",
   },
 }
 
 export default function HowItWorksPage() {
   const breadcrumbSchema = getBreadcrumbSchema([
-    { name: "Cara Order", url: "https://selesainaja.com/how-it-works" }
+    { name: "Cara Order", url: "https://selesainaja.vercel.app/how-it-works" }
   ]);
 
   return (

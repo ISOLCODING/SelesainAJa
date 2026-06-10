@@ -23,7 +23,6 @@ import {
   BiCheckCircle,
   BiLogoWhatsapp
 } from "react-icons/bi";
-import { services } from "@/lib/constants";
 import { notFound } from "next/navigation";
 import { PageHeader } from "@/components/layout/PageHeader";
 
@@ -40,11 +39,9 @@ const generalFaqs = [
 ];
 
 export default function ServiceDetailClient({
-  slug,
-  serviceTitle,
+  service,
 }: {
-  slug: string;
-  serviceTitle?: string;
+  service: any;
 }) {
   const [activeFaq, setActiveFaq] = useState<number | null>(0);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -70,14 +67,14 @@ export default function ServiceDetailClient({
     });
   }, { scope: containerRef });
 
-  const service = services.find((s) => s.href === `/services/${slug}`);
   if (!service) return notFound();
 
   const whatsappText = encodeURIComponent(
-    `Halo Admin SelesainAja, saya tertarik dan ingin konsultasi mengenai layanan "${service.title}". Boleh minta informasi lebih lanjut?`
+    `Halo Admin SelesainAja, saya tertarik dan ingin konsultasi mengenai layanan "${service.name || service.title}". Boleh minta informasi lebih lanjut?`
   );
   const whatsappUrl = `https://wa.me/6281112345678?text=${whatsappText}`;
-  const displayTitle = serviceTitle || service.title || slug;
+  const displayTitle = service.name || service.title;
+  const slug = service.slug;
 
   // Determine a relevant image based on the slug
   let heroImage = "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?q=80&w=1200&auto=format&fit=crop";
@@ -111,10 +108,10 @@ export default function ServiceDetailClient({
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="animate-section">
             <h2 className="text-3xl md:text-4xl font-black text-slate-900 tracking-tight leading-[1.2] mb-6">
-              Lebih Dekat dengan Layanan <span className="text-blue-600">{service.title}</span>
+              Lebih Dekat dengan Layanan <span className="text-blue-600">{displayTitle}</span>
             </h2>
             <p className="text-lg text-slate-600 leading-relaxed mb-8">
-              {service.fullDescription}
+              {service.fullDescription || service.shortDescription}
             </p>
             <div className="flex flex-col sm:flex-row items-center gap-4">
               <a
@@ -130,7 +127,7 @@ export default function ServiceDetailClient({
           <div className="animate-section relative aspect-square lg:aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl bg-slate-100">
             <Image 
               src={heroImage} 
-              alt={service.title} 
+              alt={displayTitle} 
               fill
               className="object-cover"
               priority
@@ -148,7 +145,7 @@ export default function ServiceDetailClient({
             <div className="lg:col-span-7 animate-section">
               <h2 className="text-3xl font-black text-slate-900 mb-10 tracking-tight">Apa Saja Keunggulannya?</h2>
               <div className="space-y-6">
-                {service.benefits?.map((benefit, i) => (
+                {service.benefits?.map((benefit: string, i: number) => (
                   <div key={i} className="flex items-start gap-4 p-6 bg-white rounded-xl border border-slate-200 shadow-sm">
                     <div className="w-10 h-10 rounded-full bg-slate-900 text-white flex items-center justify-center shrink-0">
                       <RiCheckLine className="text-xl" />
@@ -167,12 +164,12 @@ export default function ServiceDetailClient({
               <div className="bg-white rounded-2xl border border-slate-200 shadow-xl p-8 sticky top-24">
                 <div className="border-b border-slate-100 pb-6 mb-6">
                   <p className="text-sm font-bold text-slate-500 uppercase tracking-widest mb-2">Investasi</p>
-                  <p className="text-4xl font-black text-slate-900">{service.price}</p>
+                  <p className="text-4xl font-black text-slate-900">{service.priceDisplay || service.price}</p>
                 </div>
                 
                 <h4 className="text-sm font-bold text-slate-900 uppercase tracking-widest mb-4">Yang Anda Dapatkan:</h4>
                 <ul className="space-y-4 mb-8">
-                  {service.features?.map((feat, i) => (
+                  {service.features?.map((feat: string, i: number) => (
                     <li key={i} className="flex items-start gap-3">
                       <RiCheckLine className="text-slate-900 text-xl shrink-0" />
                       <span className="text-slate-600 text-sm">{feat}</span>
@@ -180,7 +177,7 @@ export default function ServiceDetailClient({
                   ))}
                   <li className="flex items-start gap-3">
                     <RiTimeLine className="text-slate-900 text-xl shrink-0" />
-                    <span className="text-slate-600 text-sm">Estimasi {service.deliveryTime}</span>
+                    <span className="text-slate-600 text-sm">Estimasi {service.deliveryTime || "1-3 Hari"}</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <RiSecurePaymentLine className="text-slate-900 text-xl shrink-0" />

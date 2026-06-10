@@ -22,7 +22,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/", "/admin/", "/dashboard/"],
       },
     ],
-    sitemap: "https://selesainaja.com/sitemap.xml",
-    host: "https://selesainaja.com",
+    sitemap: "https://selesainaja.vercel.app/sitemap.xml",
+    host: "https://selesainaja.vercel.app",
   };
 }

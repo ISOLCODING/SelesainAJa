@@ -2,6 +2,7 @@ import { Metadata } from "next"
 import JsonLd from "@/components/seo/JsonLd"
 import { getBreadcrumbSchema } from "@/lib/seo/structured-data"
 import { ServicesClient } from "@/components/frontend/services/ServicesClient"
+import { prisma } from "@/lib/prisma"
 
 export const metadata: Metadata = {
   title: "Layanan Jasa Pengerjaan Tugas — Makalah, Paper, Presentasi",
@@ -16,25 +17,30 @@ export const metadata: Metadata = {
     "harga jasa tugas",
     "jasa pengerjaan tugas online",
   ],
-  alternates: { canonical: "https://selesainaja.com/services" },
+  alternates: { canonical: "https://selesainaja.vercel.app/services" },
   openGraph: {
     title: "Layanan Jasa Pengerjaan Tugas — Makalah, Paper, Presentasi | SelesainAja",
     description:
       "Semua layanan jasa pengerjaan tugas akademik: makalah, paper, presentasi, jurnal, essay. Tim profesional, bebas plagiat, harga transparan.",
-    url: "https://selesainaja.com/services",
+    url: "https://selesainaja.vercel.app/services",
     images: [{ url: "/og/services.jpg", width: 1200, height: 630, alt: "Layanan SelesainAja" }],
   },
 }
 
-export default function ServicesPage() {
+export default async function ServicesPage() {
   const breadcrumbSchema = getBreadcrumbSchema([
-    { name: "Layanan", url: "https://selesainaja.com/services" }
+    { name: "Layanan", url: "https://selesainaja.vercel.app/services" }
   ]);
+
+  const dbServices = await prisma.service.findMany({
+    where: { isActive: true },
+    orderBy: { sortOrder: "asc" }
+  });
 
   return (
     <>
       <JsonLd data={breadcrumbSchema} />
-      <ServicesClient />
+      <ServicesClient initialServices={dbServices} />
     </>
   )
 }

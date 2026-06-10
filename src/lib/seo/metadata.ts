@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 
-const BASE_URL = "https://selesainaja.com";
+const BASE_URL = "https://selesainaja.vercel.app";
 
 interface GenerateMetadataProps {
   title: string;

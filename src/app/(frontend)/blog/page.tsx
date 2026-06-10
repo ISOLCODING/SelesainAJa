@@ -22,12 +22,12 @@ export const metadata: Metadata = {
     "blog jasa pengerjaan tugas",
     "tips skripsi tesis",
   ],
-  alternates: { canonical: "https://selesainaja.com/blog" },
+  alternates: { canonical: "https://selesainaja.vercel.app/blog" },
   openGraph: {
     title: "Blog — Tips Akademik, Panduan Tugas, & Informasi Kuliah | SelesainAja",
     description:
       "Tips akademik, panduan mengerjakan tugas, cara menulis makalah, dan informasi kuliah. Update setiap minggu!",
-    url: "https://selesainaja.com/blog",
+    url: "https://selesainaja.vercel.app/blog",
   },
 }
 
@@ -39,7 +39,7 @@ export default async function BlogPage({ searchParams }: { searchParams: Promise
   const searchQuery = typeof resolvedParams.search === 'string' ? resolvedParams.search : undefined;
 
   const breadcrumbSchema = getBreadcrumbSchema([
-    { name: "Blog", url: "https://selesainaja.com/blog" }
+    { name: "Blog", url: "https://selesainaja.vercel.app/blog" }
   ]);
 
   const whereClause: any = { status: 'published' };

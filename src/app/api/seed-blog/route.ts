@@ -36,7 +36,7 @@ export async function GET() {
           author = await prisma.user.create({
             data: {
               name: post.author || "Admin",
-              email: "admin@selesainaja.com",
+              email: "admin@selesainaja.vercel.app",
               role: "admin",
               isActive: true,
             }

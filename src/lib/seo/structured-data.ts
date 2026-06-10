@@ -1,4 +1,4 @@
-const BASE_URL = "https://selesainaja.com";
+const BASE_URL = "https://selesainaja.vercel.app";
 
 // ─── ORGANIZATION SCHEMA ─────────────────────────────────────────────────────
 export function getOrganizationSchema() {
@@ -7,7 +7,7 @@ export function getOrganizationSchema() {
     "@type": "Organization",
     "@id": `${BASE_URL}/#organization`,
     name: "SelesainAja",
-    alternateName: ["Selesain Aja", "SelesainAja.com"],
+    alternateName: ["Selesain Aja", "selesainaja.vercel.app"],
     url: BASE_URL,
     logo: {
       "@type": "ImageObject",

@@ -17,19 +17,19 @@ export const metadata: Metadata = {
     "garansi pengerjaan tugas",
     "harga jasa tugas kuliah",
   ],
-  alternates: { canonical: "https://selesainaja.com/faq" },
+  alternates: { canonical: "https://selesainaja.vercel.app/faq" },
   openGraph: {
     title: "FAQ — Pertanyaan Seputar Jasa Pengerjaan Tugas | SelesainAja",
     description:
       "Tanya jawab lengkap: harga, proses, garansi, privasi, revisi. Temukan jawaban semua pertanyaan Anda.",
-    url: "https://selesainaja.com/faq",
+    url: "https://selesainaja.vercel.app/faq",
   },
 }
 
 export default function FAQPage() {
   const faqSchema = getFAQSchema(faqs);
   const breadcrumbSchema = getBreadcrumbSchema([
-    { name: "FAQ", url: "https://selesainaja.com/faq" }
+    { name: "FAQ", url: "https://selesainaja.vercel.app/faq" }
   ]);
 
   return (

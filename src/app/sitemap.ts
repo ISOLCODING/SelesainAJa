@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { services } from "@/lib/constants";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://selesainaja.com";
+  const baseUrl = "https://selesainaja.vercel.app";
 
   const staticPages: MetadataRoute.Sitemap = [
     { url: baseUrl,                          lastModified: new Date(), changeFrequency: "weekly",  priority: 1.0 },
