@@ -66,7 +66,7 @@ export default function DashboardLayout({ children, user }: DashboardLayoutProps
   const pathname = usePathname();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  const isAuthPage = pathname.endsWith("/login") || pathname.endsWith("/forgot-password");
+  const isAuthPage = pathname.endsWith("/login");
 
   if (isAuthPage) {
     return <>{children}</>;

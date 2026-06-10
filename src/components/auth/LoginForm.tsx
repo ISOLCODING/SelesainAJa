@@ -96,12 +96,7 @@ export function LoginForm() {
 
             {/* Password Field */}
             <div className="space-y-2">
-              <div className="flex items-center justify-between ml-1">
-                <label className="text-sm font-bold text-slate-700">Password</label>
-                <Link href="/forgot-password" className="text-xs font-bold text-primary hover:text-secondary transition-colors">
-                  Lupa password?
-                </Link>
-              </div>
+              <label className="text-sm font-bold text-slate-700 ml-1">Password</label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400">
                   <RiLockPasswordLine className="text-xl" />
