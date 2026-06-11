@@ -113,7 +113,7 @@ export const metadata: Metadata = {
   },
 
   verification: {
-    google: "IQ5mNNmZtFXAp7w12RrW3RX-zD-thK-yQJ9b87Wf7MM",
+    google: "3n4bgWH7I_2jo6BB16z6Er-oYQRo7zMSG3vFGMomeiE",
     yandex: "YANDEX_VERIFICATION_CODE",
     yahoo: "YAHOO_VERIFICATION_CODE",
     other: {
@@ -157,7 +157,7 @@ export const metadata: Metadata = {
   },
 
   other: {
-    "google-site-verification": "IQ5mNNmZtFXAp7w12RrW3RX-zD-thK-yQJ9b87Wf7MM",
+    "google-site-verification": "3n4bgWH7I_2jo6BB16z6Er-oYQRo7zMSG3vFGMomeiE",
     "msvalidate.01": "BING_CODE",
     "p:domain_verify": "PINTEREST_CODE",
     "fb:app_id": "FACEBOOK_APP_ID",
