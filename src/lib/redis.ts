@@ -1,11 +1,14 @@
 import { Redis } from '@upstash/redis'
 import { Ratelimit } from '@upstash/ratelimit'
 
-const redisUrl = process.env.UPSTASH_REDIS_REST_URL
-const redisToken = process.env.UPSTASH_REDIS_REST_TOKEN
+// Sanitize env vars: trim and strip BOM characters to prevent Vercel .env parsing issues
+const rawUrl = process.env.UPSTASH_REDIS_REST_URL || ''
+const rawToken = process.env.UPSTASH_REDIS_REST_TOKEN || ''
+const redisUrl = rawUrl.replace(/^\uFEFF/, '').trim()
+const redisToken = rawToken.replace(/^\uFEFF/, '').trim()
 
 // Determine if we should mock Redis for local development without keys
-const isRedisConfigured = !!redisUrl && !!redisToken
+const isRedisConfigured = !!redisUrl && !!redisToken && redisUrl.startsWith('https')
 
 export const redis = isRedisConfigured
   ? new Redis({

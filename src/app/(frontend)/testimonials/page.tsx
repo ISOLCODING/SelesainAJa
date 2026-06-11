@@ -5,8 +5,24 @@ import { PageHeader } from "@/components/layout/PageHeader"
 import { TestimonialsSection } from "@/components/frontend/home/sections/TestimonialsSection"
 
 export const metadata: Metadata = {
-  title: "Testimoni | SelesainAja",
+  title: "Testimoni",
   description: "Apa kata mereka yang telah menggunakan layanan SelesainAja? Temukan berbagai testimoni dari mahasiswa di seluruh Indonesia.",
+  openGraph: {
+    title: "Testimoni Klien — SelesainAja",
+    description: "Apa kata mereka yang telah menggunakan layanan SelesainAja? Temukan berbagai testimoni dari mahasiswa di seluruh Indonesia.",
+    url: "https://selesainaja.vercel.app/testimonials",
+    siteName: "SelesainAja",
+    locale: "id_ID",
+    type: "website",
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Testimoni Klien — SelesainAja",
+    description: "Apa kata mereka yang telah menggunakan layanan SelesainAja? Temukan berbagai testimoni dari mahasiswa di seluruh Indonesia.",
+    images: ["/og-image.jpg"],
+  },
+  keywords: ["testimoni selesainaja", "review jasa tugas", "pengalaman joki tugas", "testimoni mahasiswa"],
 }
 
 export default function TestimonialsPage() {

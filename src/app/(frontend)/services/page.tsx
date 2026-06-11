@@ -32,10 +32,15 @@ export default async function ServicesPage() {
     { name: "Layanan", url: "https://selesainaja.vercel.app/services" }
   ]);
 
-  const dbServices = await prisma.service.findMany({
-    where: { isActive: true },
-    orderBy: { sortOrder: "asc" }
-  });
+  let dbServices: any[] = [];
+  try {
+    dbServices = await prisma.service.findMany({
+      where: { isActive: true },
+      orderBy: { sortOrder: "asc" }
+    });
+  } catch (e) {
+    console.error("Services page DB fetch error:", e);
+  }
 
   return (
     <>

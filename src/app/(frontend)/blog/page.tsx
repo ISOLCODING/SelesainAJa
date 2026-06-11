@@ -56,15 +56,27 @@ export default async function BlogPage({ searchParams }: { searchParams: Promise
     whereClause.title = { contains: searchQuery, mode: 'insensitive' };
   }
 
-  // Fetch from database
-  const rawPosts = await prisma.article.findMany({
-    where: whereClause,
-    orderBy: { publishedAt: 'desc' },
-    include: {
-      author: { select: { name: true } },
-      categories: { include: { category: true } }
-    }
-  });
+  // Fetch from database with error handling
+  let rawPosts: any[] = [];
+  let dbCategories: any[] = [];
+  try {
+    [rawPosts, dbCategories] = await Promise.all([
+      prisma.article.findMany({
+        where: whereClause,
+        orderBy: { publishedAt: 'desc' },
+        include: {
+          author: { select: { name: true } },
+          categories: { include: { category: true } }
+        }
+      }),
+      prisma.category.findMany({
+        where: { articles: { some: { article: { status: 'published' } } } },
+        select: { name: true }
+      })
+    ]);
+  } catch (e) {
+    console.error("Blog page DB fetch error:", e);
+  }
 
   // Map to frontend structure
   const blogPosts = rawPosts.map((post) => ({
@@ -78,11 +90,6 @@ export default async function BlogPage({ searchParams }: { searchParams: Promise
     author: post.author?.name || "Tim Penulis"
   }));
 
-  // Fetch dynamic categories
-  const dbCategories = await prisma.category.findMany({
-    where: { articles: { some: { article: { status: 'published' } } } },
-    select: { name: true }
-  });
   const categories = ["All News", ...Array.from(new Set(dbCategories.map(c => c.name)))];
 
   // Segregate posts for the layout

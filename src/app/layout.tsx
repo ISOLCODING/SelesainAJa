@@ -119,7 +119,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://selesainaja.vercel.app",
     languages: {
+      "x-default": "https://selesainaja.vercel.app",
       "id-ID": "https://selesainaja.vercel.app",
+      "id": "https://selesainaja.vercel.app",
     },
   },
 

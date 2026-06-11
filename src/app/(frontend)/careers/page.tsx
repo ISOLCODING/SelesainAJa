@@ -4,8 +4,24 @@ import { Footer } from "@/components/layout/Footer"
 import { PageHeader } from "@/components/layout/PageHeader"
 
 export const metadata: Metadata = {
-  title: "Karir | SelesainAja",
-  description: "Bergabunglah menjadi bagian dari tim ahli penulis dan akademisi SelesainAja.",
+  title: "Karir",
+  description: "Bergabunglah menjadi bagian dari tim ahli penulis dan akademisi SelesainAja. Open Recruitment Freelance Academic Writer.",
+  openGraph: {
+    title: "Karir — SelesainAja",
+    description: "Bergabunglah menjadi bagian dari tim ahli penulis dan akademisi SelesainAja. Open Recruitment Freelance Academic Writer.",
+    url: "https://selesainaja.vercel.app/careers",
+    siteName: "SelesainAja",
+    locale: "id_ID",
+    type: "website",
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Karir — SelesainAja",
+    description: "Bergabunglah menjadi bagian dari tim ahli penulis dan akademisi SelesainAja.",
+    images: ["/og-image.jpg"],
+  },
+  keywords: ["karir selesainaja", "lowongan penulis lepas", "freelance academic writer", "rekrutmen penulis"],
 }
 
 export default function CareersPage() {

@@ -65,5 +65,5 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
   pages: {
     signIn: "/login", // Default sign-in page
   },
-  secret: process.env.NEXTAUTH_SECRET || "default-secret-do-not-use-in-production",
+  secret: process.env.AUTH_SECRET || process.env.NEXTAUTH_SECRET || "default-secret-do-not-use-in-production",
 });

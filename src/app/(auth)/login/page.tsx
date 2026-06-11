@@ -4,7 +4,7 @@ import Link from "next/link"
 import { RiArrowLeftLine } from "react-icons/ri"
 
 export const metadata: Metadata = {
-  title: "Masuk — SelesainAja | Jasa Pengerjaan Tugas",
+  title: "Masuk — Jasa Pengerjaan Tugas",
   description: "Masuk ke akun SelesainAja untuk mengelola pesanan Anda.",
   robots: { index: false, follow: false },
 }

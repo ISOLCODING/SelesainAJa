@@ -11,22 +11,51 @@ import { prisma } from "@/lib/prisma";
 import { notFound } from "next/navigation";
 import { format } from "date-fns";
 import { id } from "date-fns/locale";
+import JsonLd from "@/components/seo/JsonLd";
+import { getBlogSchema, getBreadcrumbSchema } from "@/lib/seo/structured-data";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const post = await prisma.article.findUnique({
-    where: { slug },
-  });
-  
+  let post = null;
+  try {
+    post = await prisma.article.findUnique({ where: { slug } });
+  } catch (e) {
+    console.error("Blog detail metadata fetch error:", e);
+  }
+
   if (!post) {
     return {
-      title: "Artikel Tidak Ditemukan | SelesainAja",
+      title: "Artikel Tidak Ditemukan",
     };
   }
 
+  const metaTitle = post.metaTitle || post.title;
+  const metaDescription = post.metaDescription || post.excerpt || "";
+  const url = `https://selesainaja.vercel.app/blog/${slug}`;
+  const image = post.featuredImage || "/og-image.jpg";
+
   return {
-    title: `${post.metaTitle || post.title} | Blog SelesainAja`,
-    description: post.metaDescription || post.excerpt,
+    title: `${metaTitle} — Blog`,
+    description: metaDescription,
+    alternates: { canonical: url },
+    openGraph: {
+      title: metaTitle,
+      description: metaDescription,
+      url,
+      siteName: "SelesainAja",
+      locale: "id_ID",
+      type: "article",
+      publishedTime: post.publishedAt?.toISOString(),
+      modifiedTime: post.updatedAt?.toISOString(),
+      images: [{ url: image, width: 1200, height: 630, alt: metaTitle }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: metaTitle,
+      description: metaDescription,
+      images: [image],
+    },
+    keywords: [post.category || "artikel", post.title],
   };
 }
 
@@ -81,32 +110,37 @@ export default async function BlogPostDetail({ params }: { params: Promise<{ slu
   };
 
   // Fetch Related Posts for Sidebar
-  const rawRelatedPosts = await prisma.article.findMany({
-    where: { 
-      status: 'published', 
-      id: { not: post.id },
-      categories: {
-        some: {
-          category: { name: post.category !== "Umum" ? post.category : undefined }
+  let finalRelatedPosts: any[] = [];
+  try {
+    const rawRelatedPosts = await prisma.article.findMany({
+      where: { 
+        status: 'published', 
+        id: { not: post.id },
+        categories: {
+          some: {
+            category: { name: post.category !== "Umum" ? post.category : undefined }
+          }
         }
-      }
-    },
-    orderBy: { publishedAt: 'desc' },
-    take: 3
-  });
-
-  // If not enough related posts, fetch latest
-  let finalRelatedPosts = rawRelatedPosts;
-  if (finalRelatedPosts.length < 3) {
-    const additionalPosts = await prisma.article.findMany({
-      where: {
-        status: 'published',
-        id: { notIn: [post.id, ...finalRelatedPosts.map(p => p.id)] }
       },
       orderBy: { publishedAt: 'desc' },
-      take: 3 - finalRelatedPosts.length
+      take: 3
     });
-    finalRelatedPosts = [...finalRelatedPosts, ...additionalPosts];
+
+    // If not enough related posts, fetch latest
+    finalRelatedPosts = rawRelatedPosts;
+    if (finalRelatedPosts.length < 3) {
+      const additionalPosts = await prisma.article.findMany({
+        where: {
+          status: 'published',
+          id: { notIn: [post.id, ...finalRelatedPosts.map(p => p.id)] }
+        },
+        orderBy: { publishedAt: 'desc' },
+        take: 3 - finalRelatedPosts.length
+      });
+      finalRelatedPosts = [...finalRelatedPosts, ...additionalPosts];
+    }
+  } catch (e) {
+    console.error("Blog detail related posts fetch error:", e);
   }
 
   const latestPosts = finalRelatedPosts.map(p => ({
@@ -116,8 +150,26 @@ export default async function BlogPostDetail({ params }: { params: Promise<{ slu
     image: p.featuredImage || "https://images.unsplash.com/photo-1455390582262-044cdead2708?q=80&w=2000&auto=format&fit=crop"
   }));
 
+  const blogSchema = getBlogSchema({
+    title: post.title,
+    description: post.excerpt || "",
+    url: `https://selesainaja.vercel.app/blog/${slug}`,
+    datePublished: post.publishedAt?.toISOString() || new Date().toISOString(),
+    dateModified: post.updatedAt?.toISOString(),
+    image: post.image,
+    author: post.author,
+  });
+
+  const breadcrumbSchema = getBreadcrumbSchema([
+    { name: "Blog", url: "https://selesainaja.vercel.app/blog" },
+    { name: post.category, url: `https://selesainaja.vercel.app/blog?category=${encodeURIComponent(post.category)}` },
+    { name: post.title }
+  ]);
+
   return (
     <>
+      <JsonLd data={blogSchema} />
+      <JsonLd data={breadcrumbSchema} />
       <Header />
       <main className="grow pt-24 pb-20 bg-white min-h-screen">
         <div className="container mx-auto px-4 lg:px-8 max-w-7xl">

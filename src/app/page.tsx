@@ -41,12 +41,22 @@ export default async function Home() {
   const orgSchema = getOrganizationSchema();
   const websiteSchema = getWebsiteSchema();
 
-  // Fetch dynamic content from Prisma
-  const [dbServices, dbTestimonials, dbFaqs] = await Promise.all([
-    prisma.service.findMany({ where: { isActive: true }, orderBy: { sortOrder: "asc" } }),
-    prisma.testimonial.findMany({ where: { status: "published" }, orderBy: { sortOrder: "asc" } }),
-    prisma.faq.findMany({ where: { isActive: true }, orderBy: { sortOrder: "asc" } })
-  ]);
+  // Fetch dynamic content from Prisma with error handling
+  let dbServices: any[] = [];
+  let dbTestimonials: any[] = [];
+  let dbFaqs: any[] = [];
+  try {
+    const results = await Promise.allSettled([
+      prisma.service.findMany({ where: { isActive: true }, orderBy: { sortOrder: "asc" } }),
+      prisma.testimonial.findMany({ where: { status: "published" }, orderBy: { sortOrder: "asc" } }),
+      prisma.faq.findMany({ where: { isActive: true }, orderBy: { sortOrder: "asc" } })
+    ]);
+    if (results[0].status === "fulfilled") dbServices = results[0].value;
+    if (results[1].status === "fulfilled") dbTestimonials = results[1].value;
+    if (results[2].status === "fulfilled") dbFaqs = results[2].value;
+  } catch (e) {
+    console.error("Homepage DB fetch error:", e);
+  }
 
   return (
     <>

@@ -37,6 +37,10 @@ const nextConfig: NextConfig | any = {
         source: "/ingest/:path*",
         destination: "https://us.i.posthog.com/:path*",
       },
+      {
+        source: "/site.xml",
+        destination: "/sitemap.xml",
+      },
     ];
   },
   async headers() {
