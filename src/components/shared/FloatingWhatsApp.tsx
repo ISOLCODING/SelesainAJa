@@ -2,6 +2,7 @@
 
 import { RiWhatsappLine } from "react-icons/ri"
 import { motion } from "framer-motion"
+import posthog from "posthog-js"
 
 export function FloatingWhatsApp() {
   return (
@@ -9,6 +10,7 @@ export function FloatingWhatsApp() {
       href="https://wa.me/6281112345678"
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() => posthog.capture("whatsapp_cta_clicked", { source: "floating_button" })}
       initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ delay: 1, type: "spring", stiffness: 200, damping: 20 }}

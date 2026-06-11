@@ -53,3 +53,4 @@ next-env.d.ts
 .antigravity/
 artifacts/
 .ai/
+.env.local

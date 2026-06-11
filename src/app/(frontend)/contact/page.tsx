@@ -13,6 +13,7 @@ import JsonLd from "@/components/seo/JsonLd"
 import { getBreadcrumbSchema } from "@/lib/seo/structured-data"
 import { contactInfo } from "@/lib/data/contact"
 import { motion } from "framer-motion"
+import posthog from "posthog-js"
 
 export default function ContactPage() {
   const breadcrumbSchema = getBreadcrumbSchema([
@@ -78,7 +79,15 @@ export default function ContactPage() {
                 <h3 className="text-3xl font-black text-[#0A0A0B] mb-2">Kirim Pesan</h3>
                 <p className="text-[#71717A] mb-8 font-medium">Isi formulir di bawah ini dan kami akan membalas secepatnya.</p>
                 
-                <form className="space-y-6">
+                <form
+                  className="space-y-6"
+                  onSubmit={(e) => {
+                    e.preventDefault()
+                    const form = e.currentTarget
+                    const subject = (form.elements.namedItem("subject") as HTMLInputElement)?.value
+                    posthog.capture("contact_form_submitted", { subject })
+                  }}
+                >
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="name" className="font-bold">Nama Lengkap</Label>

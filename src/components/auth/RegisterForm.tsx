@@ -9,6 +9,7 @@ import { motion } from "framer-motion"
 import { RiEyeLine, RiEyeOffLine, RiGoogleFill, RiLockPasswordLine, RiMailLine, RiUser3Line } from "react-icons/ri"
 import { BiLoaderAlt, BiErrorCircle } from "react-icons/bi"
 import { registerUser } from "@/app/actions/register"
+import posthog from "posthog-js"
 
 export function RegisterForm() {
   const router = useRouter()
@@ -60,13 +61,16 @@ export function RegisterForm() {
       if (!result.success) {
         setError(result.error as string)
       } else {
+        posthog.identify(email, { email, name })
+        posthog.capture("user_registered", { method: "credentials" })
+
         // Login setelah register sukses
         const res = await signIn("credentials", {
           redirect: false,
           email,
           password,
         })
-        
+
         if (res?.error) {
           setError(res.error)
         } else {
@@ -75,6 +79,7 @@ export function RegisterForm() {
       }
     } catch (err) {
       setError("Terjadi kesalahan pada sistem")
+      posthog.captureException(err)
     } finally {
       setIsLoading(false)
     }

@@ -24,6 +24,7 @@ import {
   BiLogoWhatsapp
 } from "react-icons/bi";
 import { notFound } from "next/navigation";
+import posthog from "posthog-js";
 import { PageHeader } from "@/components/layout/PageHeader";
 
 if (typeof window !== "undefined") {
@@ -45,6 +46,15 @@ export default function ServiceDetailClient({
 }) {
   const [activeFaq, setActiveFaq] = useState<number | null>(0);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!service) return
+    posthog.capture("service_detail_viewed", {
+      service_name: service.name || service.title,
+      service_slug: service.slug,
+      service_price: service.priceDisplay || service.price,
+    })
+  }, [])
   
   useGSAP(() => {
     // Clean fade-up animation for all sections
@@ -118,6 +128,7 @@ export default function ServiceDetailClient({
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => posthog.capture("service_consultation_clicked", { service_name: displayTitle, service_slug: slug })}
                 className="w-full sm:w-auto bg-slate-900 text-white px-8 py-4 rounded-lg font-bold text-base hover:bg-slate-800 transition-colors flex items-center justify-center gap-2 animate__animated animate__pulse animate__infinite animate__slower"
               >
                 Konsultasi Gratis <RiArrowRightLine />
@@ -189,6 +200,7 @@ export default function ServiceDetailClient({
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => posthog.capture("service_order_clicked", { service_name: displayTitle, service_slug: slug, service_price: service.priceDisplay || service.price })}
                   className="w-full block bg-slate-900 text-white py-4 rounded-lg font-bold text-center hover:bg-slate-800 transition-colors"
                 >
                   Pesan Sekarang
@@ -232,7 +244,11 @@ export default function ServiceDetailClient({
             {generalFaqs.map((faq, i) => (
               <div key={i} className="border-b border-slate-200">
                 <button
-                  onClick={() => setActiveFaq(activeFaq === i ? null : i)}
+                  onClick={() => {
+                    const next = activeFaq === i ? null : i
+                    setActiveFaq(next)
+                    if (next !== null) posthog.capture("faq_expanded", { faq_question: faq.q, service_slug: slug })
+                  }}
                   className="w-full py-6 flex items-center justify-between text-left gap-4 hover:text-slate-600 transition-colors focus:outline-none"
                 >
                   <span className="text-lg font-bold text-slate-900">

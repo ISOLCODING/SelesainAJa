@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight, CheckCircle2, Star } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import posthog from "posthog-js"
 
 const benefits = [
   "Privasi Terjamin 100%",
@@ -68,7 +69,7 @@ export function HeroSection() {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="flex flex-col sm:flex-row items-center gap-4 mb-12"
             >
-              <Link href="/services" className="w-full sm:w-auto">
+              <Link href="/services" className="w-full sm:w-auto" onClick={() => posthog.capture("hero_order_clicked")}>
                 <Button size="lg" className="w-full sm:w-auto bg-[#2C5EAD] hover:bg-[#1591DC] text-white rounded-2xl h-14 px-8 text-base font-bold shadow-[0_8px_20px_-6px_rgba(44,94,173,0.5)] transition-all duration-300 hover:-translate-y-1">
                   Pesan Sekarang
                   <ArrowRight className="ml-2 w-5 h-5" />

@@ -9,6 +9,7 @@ import { motion } from "framer-motion"
 import { RiEyeLine, RiEyeOffLine, RiGoogleFill, RiLockPasswordLine, RiMailLine } from "react-icons/ri"
 import { BiLoaderAlt, BiErrorCircle } from "react-icons/bi"
 import { loginAction } from "@/app/actions/auth"
+import posthog from "posthog-js"
 
 export function LoginForm() {
   const router = useRouter()
@@ -20,23 +21,31 @@ export function LoginForm() {
     e.preventDefault()
     setIsLoading(true)
     setError(null)
-    
+
+    const email = (e.currentTarget.elements.namedItem("email") as HTMLInputElement)?.value
+
     try {
       const formData = new FormData(e.currentTarget);
       // Let the server action know to redirect to the smart router
       formData.append("redirectTo", `/dashboard`);
-      
+
       const result = await loginAction(formData);
-      
+
       // If we get here and there's an error string returned
       if (result?.error) {
         setError(result.error);
+        posthog.capture("login_failed", { error: result.error })
         setIsLoading(false);
+      } else {
+        posthog.identify(email, { email })
+        posthog.capture("user_logged_in", { method: "credentials" })
       }
     } catch (err) {
       // Typically redirect throws an error that we shouldn't catch,
       // but if we do, Next.js handles NEXT_REDIRECT internally.
+      if ((err as any)?.digest?.startsWith("NEXT_REDIRECT")) throw err
       setError("Terjadi kesalahan sistem");
+      posthog.captureException(err)
       setIsLoading(false);
     }
   }

@@ -8,6 +8,7 @@ import { FloatingWhatsApp } from "@/components/shared/FloatingWhatsApp"
 import NextTopLoader from "nextjs-toploader"
 import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider"
 import GoogleAnalytics from "@/components/seo/GoogleAnalytics"
+import { Analytics } from "@vercel/analytics/next"
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -179,6 +180,9 @@ const jakarta = Plus_Jakarta_Sans({
   display: "swap",
 })
 
+import { PostHogProvider } from "@/components/providers/PostHogProvider"
+import SuspendedPostHogPageView from "@/components/providers/PostHogPageView"
+
 export default function RootLayout({
   children,
 }: {
@@ -198,15 +202,19 @@ export default function RootLayout({
           speed={200}
           shadow="0 0 10px #0066FF,0 0 5px #0066FF"
         />
-        <SmoothScrollProvider>
-          <TooltipProvider>
-            {children}
-          </TooltipProvider>
-        </SmoothScrollProvider>
+        <PostHogProvider>
+          <SuspendedPostHogPageView />
+          <SmoothScrollProvider>
+            <TooltipProvider>
+              {children}
+            </TooltipProvider>
+          </SmoothScrollProvider>
+        </PostHogProvider>
         <FloatingWhatsApp />
         <Toaster />
       </body>
       <GoogleAnalytics />
+      <Analytics />
     </html>
   )
 }
