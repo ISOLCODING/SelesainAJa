@@ -114,12 +114,6 @@ export const metadata: Metadata = {
 
   verification: {
     google: "3n4bgWH7I_2jo6BB16z6Er-oYQRo7zMSG3vFGMomeiE",
-    yandex: "YANDEX_VERIFICATION_CODE",
-    yahoo: "YAHOO_VERIFICATION_CODE",
-    other: {
-      "msvalidate.01": "BING_VERIFICATION_CODE",
-      "pinterest-site-verification": "PINTEREST_CODE",
-    },
   },
 
   alternates: {
@@ -157,11 +151,6 @@ export const metadata: Metadata = {
   },
 
   other: {
-    "google-site-verification": "3n4bgWH7I_2jo6BB16z6Er-oYQRo7zMSG3vFGMomeiE",
-    "msvalidate.01": "BING_CODE",
-    "p:domain_verify": "PINTEREST_CODE",
-    "fb:app_id": "FACEBOOK_APP_ID",
-    "fb:pages": "FACEBOOK_PAGE_ID",
     "ia:markup_url": "https://selesainaja.vercel.app/ia",
   },
 }
